@@ -6,79 +6,93 @@
 <title>ส่วนประกอบของเมนู | อาหารไทย</title>
 <meta name="description" content="ดูส่วนประกอบของเมนูเด็ดอาหารไทยแต่ละเมนู ทั้งส่วนประกอบหลักและสมุนไพรที่ใช้ปรุงรส">
 <style>
+  /* Houseplant-style system: walnut on linen (keep in sync with index.html) */
   :root {
-    --chili: #c8321f;
-    --turmeric: #f2a900;
-    --lime: #5d8a1a;
-    --cream: #fff8ea;
-    --ink: #2b1d14;
-    --muted: #6d5a4b;
-    --card: #ffffff;
-    --line: #ecdcc0;
+    --walnut: #321e1e;
+    --linen: #f4f1e0;
+    --graphite: #464545;
+    --sand: #f4f4f4;
+    --rule: rgba(70, 69, 69, .3);
+    --shadow: rgba(0, 0, 0, .1) 0 2px 8px 0;
+    --shadow-btn: rgba(0, 0, 0, .15) 0 2px 8px 0;
+    --font: "Inter Tight", "DM Sans", "Archivo", "Sarabun", "Noto Sans Thai", "Leelawadee UI", "Tahoma", system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: "Sarabun", "Noto Sans Thai", "Leelawadee UI", "Tahoma", system-ui, sans-serif;
-    background: var(--cream);
-    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    background: var(--linen);
+    color: var(--walnut);
     line-height: 1.7;
+    letter-spacing: -.01em;
   }
-  h1, h2, h3 { line-height: 1.35; margin: 0 0 .5em; }
+  h1, h2, h3 { line-height: 1.3; margin: 0 0 .5em; font-weight: 500; letter-spacing: -.02em; }
   a { color: inherit; }
   [hidden] { display: none !important; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--walnut); outline-offset: 3px; }
+  nav a:focus-visible { outline-color: var(--linen); }
 
-  nav {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(255,248,234,.94);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--line);
+  nav { position: sticky; top: 0; z-index: 10; background: var(--walnut); color: var(--linen); }
+  nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; min-height: 60px; }
+  nav .brand { grid-column: 2; grid-row: 1; font-weight: 600; font-size: 1.2rem; text-decoration: none; color: var(--linen); white-space: nowrap; }
+  nav .back {
+    grid-column: 1; grid-row: 1; justify-self: start; text-decoration: none; color: var(--linen);
+    opacity: .8; font-size: .95rem; white-space: nowrap; padding: 4px 0; border-bottom: 1px solid transparent;
   }
-  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
-  nav .brand { font-weight: 700; text-decoration: none; color: var(--chili); white-space: nowrap; }
-  nav .back { text-decoration: none; color: var(--muted); white-space: nowrap; }
-  nav .back:hover { color: var(--chili); }
-  a:focus-visible, button:focus-visible { outline: 3px solid var(--turmeric); outline-offset: 2px; }
+  nav .back:hover { opacity: 1; border-bottom-color: var(--linen); }
 
-  main { padding: 48px 0 64px; }
+  main { padding: 72px 0 96px; }
 
   .summary {
-    display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center;
-    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px;
+    display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: center;
+    background: var(--linen); border-radius: 8px; padding: 20px; box-shadow: var(--shadow);
   }
-  .summary img { width: 100%; height: auto; display: block; }
-  .summary h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); color: var(--chili); margin-bottom: .1em; }
-  .summary .en { color: var(--muted); font-size: 1.1rem; margin-bottom: 12px; }
-  .summary p { margin: 0 0 12px; color: var(--muted); }
-  .spice { font-size: .95rem; color: var(--muted); }
-  .spice b { color: var(--chili); letter-spacing: 2px; }
+  .summary img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--sand); border-radius: 8px; }
+  .credit { margin-top: 16px; font-size: .8rem; color: var(--graphite); }
+  .credit a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+  .eyebrow { font-size: .875rem; font-weight: 500; color: var(--graphite); text-transform: uppercase; margin-bottom: 8px; }
+  .summary h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: .1em; }
+  .summary .en { color: var(--graphite); font-size: 1.05rem; margin-bottom: 12px; }
+  .summary p { margin: 0 0 12px; color: var(--graphite); }
+  .spice { font-size: .95rem; color: var(--graphite); }
+  .spice b { color: var(--walnut); letter-spacing: 2px; font-weight: 500; }
 
-  .group { margin-top: 40px; }
-  .group h2 { font-size: 1.5rem; color: var(--chili); }
-  .group .hint { color: var(--muted); margin: 0 0 16px; }
+  .group { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--rule); }
+  .group h2 { font-size: 1.5rem; }
+  .group .hint { color: var(--graphite); margin: 0 0 20px; }
   .chips { display: flex; flex-wrap: wrap; gap: 12px; }
-  .chip {
-    background: var(--card); border: 1px solid var(--line); border-radius: 999px;
-    padding: 10px 18px; font-weight: 600;
-  }
-  .chip small { color: var(--muted); font-weight: 400; margin-left: 4px; }
+  .chip { border: 1px solid var(--walnut); border-radius: 4px; padding: 8px 16px; font-weight: 500; }
+  .chip small { color: var(--graphite); font-weight: 400; margin-left: 4px; }
   .chip.opt { border-style: dashed; }
-  .chip.opt::after { content: "ไม่ใส่ก็ได้"; font-size: .75rem; font-weight: 400; color: var(--lime); margin-left: 8px; }
-  .note { margin-top: 32px; color: var(--muted); font-size: .95rem; }
+  .chip.opt::after { content: "ไม่ใส่ก็ได้"; font-size: .75rem; font-weight: 400; color: var(--graphite); margin-left: 8px; }
+  .note { margin-top: 40px; color: var(--graphite); font-size: .95rem; }
 
-  .missing { text-align: center; padding: 48px 0; }
+  .missing { padding: 48px 0; }
   .btn {
-    display: inline-block; background: var(--turmeric); color: var(--ink);
-    padding: 12px 28px; border-radius: 999px; font-weight: 700; text-decoration: none;
+    display: inline-block; background: var(--walnut); color: var(--linen); padding: 12px 30px;
+    border-radius: 4px; font-weight: 500; text-decoration: none; box-shadow: var(--shadow-btn);
+  }
+  .btn:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  footer { border-top: 1px solid var(--rule); padding: 56px 0 0; overflow: hidden; }
+  footer .big { font-size: 1.75rem; font-weight: 500; letter-spacing: -.02em; line-height: 1.3; margin-bottom: 8px; }
+  footer p { margin: 0; color: var(--graphite); max-width: 460px; }
+  .wordmark {
+    margin-top: 56px; padding: 0 0 .06em; text-align: center; white-space: nowrap;
+    font-size: 15.5vw; font-weight: 600; line-height: .85; letter-spacing: -.05em; color: var(--walnut);
   }
 
-  footer { background: #2b1d14; color: #f3e6cf; text-align: center; padding: 36px 20px; }
-  footer .big { font-size: 1.4rem; color: var(--turmeric); }
-
+  @media (max-width: 860px) {
+    nav .wrap { grid-template-columns: 1fr; gap: 6px; padding-top: 10px; padding-bottom: 10px; }
+    nav .brand, nav .back { grid-column: 1; grid-row: auto; justify-self: center; }
+    nav .brand { order: -1; }
+  }
   @media (max-width: 640px) {
-    .summary { grid-template-columns: 1fr; text-align: center; padding: 22px; }
-    .summary img { max-width: 200px; margin: 0 auto; }
+    .summary { grid-template-columns: 1fr; gap: 24px; }
+    .summary img { max-width: none; }
+    main { padding: 48px 0 64px; }
   }
 </style>
 </head>
@@ -86,8 +100,8 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="index.html#top">🌶️ อาหารไทย</a>
     <a class="back" href="index.html#dishes">← กลับไปเมนูเด็ด</a>
+    <a class="brand" href="index.html#top">อาหารไทย</a>
   </div>
 </nav>
 
@@ -103,10 +117,12 @@
       <section class="summary">
         <img id="m-img" alt="">
         <div>
+          <div class="eyebrow">Ingredients</div>
           <h1 id="m-name"></h1>
           <div class="en" id="m-en"></div>
           <p id="m-desc"></p>
           <div class="spice">ความเผ็ด: <b id="m-spice"></b></div>
+          <p class="credit" id="m-credit"></p>
         </div>
       </section>
 
@@ -128,15 +144,18 @@
 </main>
 
 <footer>
-  <div class="big">ทานข้าวหรือยัง?</div>
-  <p>คำทักทายของคนไทยที่แปลว่า "คุณกินข้าวหรือยัง" ขอให้อร่อยกับทุกมื้อนะ!</p>
+  <div class="wrap">
+    <div class="big">ทานข้าวหรือยัง?</div>
+    <p>คำทักทายของคนไทยที่แปลว่า "คุณกินข้าวหรือยัง" ขอให้อร่อยกับทุกมื้อนะ!</p>
+  </div>
+  <div class="wordmark" aria-hidden="true">THAI FOOD</div>
 </footer>
 
 <script>
-  // ข้อมูลส่วนประกอบของเมนูเด็ดทั้ง 8 เมนู: [ชื่อไทย, ชื่ออังกฤษ, ไม่ใส่ก็ได้?]
+  // ข้อมูลส่วนประกอบของเมนูเด็ดทั้ง 23 เมนู: [ชื่อไทย, ชื่ออังกฤษ, ไม่ใส่ก็ได้?]
   const MENUS = {
     'pad-thai': {
-      name: 'ผัดไทย', en: 'Pad Thai', img: 'pad-thai.svg', spice: 1,
+      name: 'ผัดไทย', en: 'Pad Thai', img: 'pad-thai.jpg', photo: ['Andy Li','CC0','https://commons.wikimedia.org/wiki/File:Pad_Thai_with_Pork_-_Unithai.jpg'], spice: 1,
       desc: 'เส้นจันท์ผัดกับไข่ เต้าหู้ ถั่วลิสง และซอสมะขาม',
       main: [['เส้นจันท์', 'Rice noodles'], ['กุ้งสด', 'Shrimp'], ['ไข่ไก่', 'Egg'], ['เต้าหู้เหลือง', 'Firm tofu'],
              ['ถั่วงอก', 'Bean sprouts'], ['ต้นกุยช่าย', 'Garlic chives'], ['หัวไชโป๊วหวาน', 'Sweet preserved radish']],
@@ -144,21 +163,21 @@
                ['ถั่วลิสงป่น', 'Crushed peanuts'], ['พริกป่น', 'Chili flakes'], ['มะนาว', 'Lime'], ['หอมแดง', 'Shallot']]
     },
     'tom-yum-goong': {
-      name: 'ต้มยำกุ้ง', en: 'Tom Yum Goong', img: 'tom-yum-goong.svg', spice: 3,
+      name: 'ต้มยำกุ้ง', en: 'Tom Yum Goong', img: 'tom-yum-goong.jpg', photo: ['Asturio Cantabrio','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Siam_Garden_Tom_yum_goong_ac.jpg'], spice: 3,
       desc: 'ซุปกุ้งรสเผ็ดเปรี้ยว หอมตะไคร้ ข่า และใบมะกรูด',
       main: [['กุ้งสด', 'Shrimp'], ['เห็ดฟาง', 'Straw mushrooms'], ['หอมแดง', 'Shallot'], ['มะเขือเทศ', 'Tomato', true]],
       flavor: [['ตะไคร้', 'Lemongrass'], ['ข่า', 'Galangal'], ['ใบมะกรูด', 'Kaffir lime leaves'], ['พริกขี้หนู', "Bird's eye chili"],
                ['น้ำพริกเผา', 'Roasted chili paste'], ['น้ำปลา', 'Fish sauce'], ['มะนาว', 'Lime'], ['ผักชี', 'Coriander']]
     },
     'green-curry': {
-      name: 'แกงเขียวหวาน', en: 'Green Curry', img: 'green-curry.svg', spice: 3,
+      name: 'แกงเขียวหวาน', en: 'Green Curry', img: 'green-curry.jpg', photo: ['Guilhem Vellut','CC BY 2.0','https://commons.wikimedia.org/wiki/File:Green_Curry,_Siam_House,_Paris_001.jpg'], spice: 3,
       desc: 'แกงกะทิเข้มข้นจากพริกแกงเขียว ใส่มะเขือเปราะและใบโหระพา',
       main: [['เนื้อไก่', 'Chicken'], ['กะทิ', 'Coconut milk'], ['มะเขือเปราะ', 'Thai eggplant'], ['มะเขือพวง', 'Pea eggplant', true]],
       flavor: [['พริกแกงเขียวหวาน', 'Green curry paste'], ['ใบโหระพา', 'Thai basil'], ['ใบมะกรูด', 'Kaffir lime leaves'],
                ['พริกชี้ฟ้า', 'Spur chili'], ['น้ำปลา', 'Fish sauce'], ['น้ำตาลปี๊บ', 'Palm sugar']]
     },
     'som-tum': {
-      name: 'ส้มตำ', en: 'Som Tum', img: 'som-tum.svg', spice: 4,
+      name: 'ส้มตำ', en: 'Som Tum', img: 'som-tum.jpg', photo: ['Andy Li','CC0','https://commons.wikimedia.org/wiki/File:Som_Tom_(Papaya_Salad)_-_Little_Thai_2024-06-14.jpg'], spice: 4,
       desc: 'ยำมะละกอดิบตำกับมะนาว พริก ถั่วลิสง และกุ้งแห้ง',
       main: [['มะละกอดิบ', 'Green papaya'], ['มะเขือเทศ', 'Tomato'], ['ถั่วฝักยาว', 'Yardlong bean'],
              ['ถั่วลิสง', 'Peanuts'], ['กุ้งแห้ง', 'Dried shrimp']],
@@ -166,7 +185,7 @@
                ['น้ำตาลปี๊บ', 'Palm sugar'], ['ปลาร้า', 'Fermented fish sauce', true]]
     },
     'massaman-curry': {
-      name: 'แกงมัสมั่น', en: 'Massaman Curry', img: 'massaman-curry.svg', spice: 1,
+      name: 'แกงมัสมั่น', en: 'Massaman Curry', img: 'massaman-curry.jpg', photo: ['Vee Satayamas','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Massaman_curry,_Bang_Kapi,_Bangkok.jpg'], spice: 1,
       desc: 'แกงรสกลมกล่อมไม่เผ็ดมาก ใส่มันฝรั่ง ถั่วลิสง และเครื่องเทศหอมอย่างอบเชย',
       main: [['เนื้อวัวหรือเนื้อไก่', 'Beef or chicken'], ['มันฝรั่ง', 'Potato'], ['หอมหัวใหญ่', 'Onion'],
              ['ถั่วลิสง', 'Peanuts'], ['กะทิ', 'Coconut milk']],
@@ -174,14 +193,14 @@
                ['กระวาน', 'Cardamom'], ['น้ำมะขามเปียก', 'Tamarind paste'], ['น้ำตาลปี๊บ', 'Palm sugar'], ['น้ำปลา', 'Fish sauce']]
     },
     'mango-sticky-rice': {
-      name: 'ข้าวเหนียวมะม่วง', en: 'Mango Sticky Rice', img: 'mango-sticky-rice.svg', spice: 0,
+      name: 'ข้าวเหนียวมะม่วง', en: 'Mango Sticky Rice', img: 'mango-sticky-rice.jpg', photo: ['Arthur Taksin','CC BY 4.0','https://commons.wikimedia.org/wiki/File:Mango_sticky_rice_served_in_Thailand.jpg'], spice: 0,
       desc: 'มะม่วงสุกหวานกินกับข้าวเหนียวมูนราดกะทิ ของหวานสุดคลาสสิก',
       main: [['ข้าวเหนียว', 'Glutinous rice'], ['มะม่วงน้ำดอกไม้สุก', 'Ripe nam dok mai mango'], ['กะทิ', 'Coconut milk']],
       flavor: [['น้ำตาลทราย', 'Sugar'], ['เกลือ', 'Salt'], ['ใบเตย', 'Pandan leaf', true],
                ['ถั่วเขียวเราะเปลือกทอด', 'Crispy mung beans'], ['งาขาว', 'White sesame', true]]
     },
     'pad-kra-pao': {
-      name: 'ผัดกะเพรา', en: 'Pad Kra Pao', img: 'pad-kra-pao.svg', spice: 3,
+      name: 'ผัดกะเพรา', en: 'Pad Kra Pao', img: 'pad-kra-pao.jpg', photo: ['Andy Li','CC0','https://commons.wikimedia.org/wiki/File:Kao_Rad_Pad_Kra-pao_with_chicken_and_fried_egg_-_Unithai_2025-07-30.jpg'], spice: 3,
       desc: 'ผัดใบกะเพรากับเนื้อสับและพริก เสิร์ฟบนข้าวสวยพร้อมไข่ดาว',
       main: [['หมูสับหรือไก่สับ', 'Minced pork or chicken'], ['ข้าวสวย', 'Steamed rice'], ['ไข่ไก่', 'Fried egg'],
              ['ถั่วฝักยาว', 'Yardlong bean', true]],
@@ -189,11 +208,126 @@
                ['ซีอิ๊วดำ', 'Dark soy sauce'], ['ซอสหอยนางรม', 'Oyster sauce'], ['น้ำตาล', 'Sugar']]
     },
     'tom-kha-gai': {
-      name: 'ต้มข่าไก่', en: 'Tom Kha Gai', img: 'tom-kha-gai.svg', spice: 2,
+      name: 'ต้มข่าไก่', en: 'Tom Kha Gai', img: 'tom-kha-gai.jpg', photo: ['TeamTeam2002','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai_-_Thai_Food.jpg'], spice: 2,
       desc: 'ไก่ในน้ำซุปกะทิหอมข่า รสเปรี้ยวนำ ซดแล้วอุ่นสบายท้อง',
       main: [['เนื้อไก่', 'Chicken'], ['กะทิ', 'Coconut milk'], ['เห็ดฟาง', 'Straw mushrooms']],
       flavor: [['ข่า', 'Galangal'], ['ตะไคร้', 'Lemongrass'], ['ใบมะกรูด', 'Kaffir lime leaves'], ['พริกขี้หนู', "Bird's eye chili"],
                ['น้ำปลา', 'Fish sauce'], ['มะนาว', 'Lime'], ['น้ำตาลปี๊บ', 'Palm sugar'], ['ผักชี', 'Coriander']]
+    },
+    'khao-soi': {
+      name: 'ข้าวซอย', en: 'Khao Soi', img: 'khao-soi.jpg', photo: ['Douglas Perkins','CC BY 4.0','https://commons.wikimedia.org/wiki/File:Khao_Soi_02.jpg'], spice: 2,
+      desc: 'แกงกะทิรสเข้มข้นหอมเครื่องเทศแบบเหนือ เสิร์ฟกับเส้นบะหมี่ไข่ต้มและทอดกรอบ',
+      main: [['เส้นบะหมี่ไข่', 'Egg noodles'], ['เส้นบะหมี่ไข่ทอดกรอบ', 'Crispy fried egg noodles'],
+             ['เนื้อไก่หรือเนื้อวัว', 'Chicken or beef'], ['กะทิ', 'Coconut milk'], ['ผักกาดดอง', 'Pickled mustard greens', true]],
+      flavor: [['พริกแกงข้าวซอย', 'Khao soi curry paste'], ['น้ำปลา', 'Fish sauce'], ['น้ำตาลปี๊บ', 'Palm sugar'],
+               ['หอมแดง', 'Shallot'], ['มะนาว', 'Lime'], ['น้ำมันพริก', 'Chili oil', true], ['ผักชี', 'Coriander', true]]
+    },
+    'larb': {
+      name: 'ลาบ', en: 'Larb', img: 'larb.jpg', photo: ['Sbrooks36','CC BY 4.0','https://commons.wikimedia.org/wiki/File:Golden_Cuisine_cooked_beef_laab.jpg'], spice: 3,
+      desc: 'เนื้อสับคลุกข้าวคั่วป่น พริกป่น น้ำปลา และมะนาว โรยสมุนไพรสด กินกับข้าวเหนียว',
+      main: [['เนื้อสับ (หมู วัว หรือไก่)', 'Minced pork, beef or chicken'], ['ข้าวเหนียว', 'Sticky rice', true], ['ตับหมู', 'Pork liver', true], ['หอมแดง', 'Shallot'],
+             ['กะหล่ำปลี', 'Cabbage', true], ['ถั่วฝักยาว', 'Yardlong bean', true]],
+      flavor: [['ข้าวคั่ว', 'Toasted rice powder'], ['พริกป่น', 'Chili flakes'], ['น้ำปลา', 'Fish sauce'], ['มะนาว', 'Lime'],
+               ['สะระแหน่', 'Mint'], ['ต้นหอม', 'Spring onion'], ['ผักชีฝรั่ง', 'Culantro'], ['น้ำตาล', 'Sugar', true]]
+    },
+    'kaeng-som': {
+      name: 'แกงส้ม', en: 'Kaeng Som', img: 'kaeng-som.jpg', photo: ['Takeaway','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Kaeng_som_kung.jpg'], spice: 3,
+      desc: 'แกงรสเปรี้ยวจากมะขามและส้มแขก ไม่ใส่กะทิ ใส่กุ้งและผักรวม',
+      main: [['กุ้งสด', 'Shrimp'], ['ยอดฟักทอง', 'Pumpkin shoots'], ['ถั่วฝักยาว', 'Yardlong bean'],
+             ['ผักกาดขาว', 'Chinese cabbage'], ['ดอกแค', 'Sesbania flower', true]],
+      flavor: [['พริกแกงส้ม', 'Kaeng som curry paste'], ['น้ำมะขามเปียก', 'Tamarind paste'], ['ส้มแขก', 'Garcinia (kokum)', true],
+               ['น้ำปลา', 'Fish sauce'], ['น้ำตาลปี๊บ', 'Palm sugar']]
+    },
+    'khao-man-gai': {
+      name: 'ข้าวมันไก่', en: 'Khao Man Gai', img: 'khao-man-gai.jpg', photo: ['Takeaway','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Khao_mun_kai_CM.jpg'], spice: 1,
+      desc: 'ไก่ต้มเนื้อนุ่มเสิร์ฟบนข้าวหุงน้ำมันไก่ กินกับน้ำจิ้มเต้าเจี้ยวและน้ำซุปใส',
+      main: [['ไก่ต้ม', 'Poached chicken'], ['ข้าวหอมมะลิ', 'Jasmine rice'], ['แตงกวา', 'Cucumber'], ['น้ำซุปใส', 'Clear broth']],
+      flavor: [['น้ำมันไก่', 'Chicken fat'], ['กระเทียม', 'Garlic'], ['ขิง', 'Ginger'], ['เต้าเจี้ยว', 'Fermented soybean paste'],
+               ['พริกขี้หนู', "Bird's eye chili"], ['ซีอิ๊วขาว', 'Light soy sauce'], ['ผักชี', 'Coriander', true]]
+    },
+    'pad-see-ew': {
+      name: 'ผัดซีอิ๊ว', en: 'Pad See Ew', img: 'pad-see-ew.jpg', photo: ['stu_spivack','CC BY-SA 2.0','https://commons.wikimedia.org/wiki/File:Pad_see_ew.jpg'], spice: 0,
+      desc: 'เส้นใหญ่ผัดกับซีอิ๊วดำ ไข่ และคะน้า หอมกลิ่นไหม้อ่อนๆ จากกระทะร้อน',
+      main: [['เส้นใหญ่', 'Wide rice noodles'], ['หมูหรือไก่', 'Pork or chicken'], ['ไข่ไก่', 'Egg'], ['ผักคะน้า', 'Chinese broccoli']],
+      flavor: [['ซีอิ๊วดำ', 'Dark soy sauce'], ['ซีอิ๊วขาว', 'Light soy sauce'], ['ซอสหอยนางรม', 'Oyster sauce'], ['กระเทียม', 'Garlic'],
+               ['น้ำตาล', 'Sugar'], ['พริกน้ำส้ม', 'Chili in vinegar', true], ['พริกป่น', 'Chili flakes', true]]
+    },
+    'kuai-tiao-ruea': {
+      name: 'ก๋วยเตี๋ยวเรือ', en: 'Boat Noodles', img: 'kuai-tiao-ruea.jpg', photo: ['Zheng Zhou','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Boat_Noodles_with_sliced_beef_round_steak,_beef_ball,_braised_shank_and_tendon.jpg'], spice: 2,
+      desc: 'ก๋วยเตี๋ยวน้ำซุปเข้มข้นรสจัด ใส่เนื้อ ลูกชิ้น และผักบุ้ง เสิร์ฟเป็นชามเล็กๆ',
+      main: [['เส้นเล็กหรือเส้นหมี่', 'Rice noodles'], ['เนื้อวัวหรือหมู', 'Beef or pork'], ['ลูกชิ้น', 'Meatballs'],
+             ['ผักบุ้ง', 'Morning glory'], ['ถั่วงอก', 'Bean sprouts'], ['เลือดหมู', 'Pork blood', true]],
+      flavor: [['น้ำซุปเครื่องเทศ', 'Spiced broth'], ['เต้าหู้ยี้', 'Fermented tofu'], ['กระเทียมเจียว', 'Fried garlic'], ['พริกป่น', 'Chili flakes'],
+               ['น้ำตาล', 'Sugar'], ['น้ำปลา', 'Fish sauce'], ['ผักชี', 'Coriander'], ['กากหมู', 'Pork crackling', true]]
+    },
+    'phanaeng': {
+      name: 'แกงพะแนง', en: 'Phanaeng Curry', img: 'phanaeng.jpg', photo: ['Takeaway','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Phanaeng_kai.jpg'], spice: 2,
+      desc: 'แกงกะทิข้นรสหวานมันเค็ม เผ็ดไม่จัด หอมใบมะกรูดและถั่วลิสง',
+      main: [['เนื้อวัว หมู หรือไก่', 'Beef, pork or chicken'], ['กะทิ', 'Coconut milk'], ['ถั่วลิสงคั่ว', 'Roasted peanuts']],
+      flavor: [['พริกแกงพะแนง', 'Phanaeng curry paste'], ['ใบมะกรูด', 'Kaffir lime leaves'], ['พริกชี้ฟ้า', 'Spur chili'],
+               ['น้ำปลา', 'Fish sauce'], ['น้ำตาลปี๊บ', 'Palm sugar'], ['ใบโหระพา', 'Thai basil', true]]
+    },
+    'kai-yang': {
+      name: 'ไก่ย่าง', en: 'Kai Yang', img: 'kai-yang.jpg', photo: ['Takeaway','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Kai_yang_and_nam_chim.jpg'], spice: 2,
+      desc: 'ไก่หมักสมุนไพรย่างไฟอ่อนจนหนังหอม กินกับน้ำจิ้มแจ่วและข้าวเหนียว',
+      main: [['ไก่ทั้งตัวหรือสะโพกไก่', 'Whole chicken or thighs'], ['ข้าวเหนียว', 'Sticky rice', true], ['ส้มตำ', 'Papaya salad', true]],
+      flavor: [['รากผักชี', 'Coriander root'], ['กระเทียม', 'Garlic'], ['พริกไทย', 'Pepper'], ['ตะไคร้', 'Lemongrass'], ['น้ำปลา', 'Fish sauce'],
+               ['ซีอิ๊วขาว', 'Light soy sauce'], ['น้ำจิ้มแจ่ว', 'Chili dipping sauce'], ['น้ำจิ้มไก่', 'Sweet chili sauce', true]]
+    },
+    'yam-wun-sen': {
+      name: 'ยำวุ้นเส้น', en: 'Yam Wun Sen', img: 'yam-wun-sen.jpg', photo: ['Takeaway','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Yam_wunsen.jpg'], spice: 3,
+      desc: 'วุ้นเส้นลวกยำกับหมูสับและกุ้ง รสเปรี้ยวเผ็ดจัดจ้าน โรยถั่วลิสง',
+      main: [['วุ้นเส้น', 'Glass noodles'], ['หมูสับ', 'Minced pork'], ['กุ้งสด', 'Shrimp', true], ['เห็ดหูหนู', 'Wood ear mushrooms'],
+             ['หอมหัวใหญ่', 'Onion'], ['มะเขือเทศ', 'Tomato', true]],
+      flavor: [['พริกขี้หนู', "Bird's eye chili"], ['มะนาว', 'Lime'], ['น้ำปลา', 'Fish sauce'], ['น้ำตาล', 'Sugar'],
+               ['ถั่วลิสงคั่ว', 'Roasted peanuts'], ['ผักชี', 'Coriander'], ['ต้นหอม', 'Spring onion'], ['น้ำพริกเผา', 'Roasted chili paste', true]]
+    },
+    'ho-mok': {
+      name: 'ห่อหมก', en: 'Ho Mok', img: 'ho-mok.jpg', photo: ['Takeaway','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Ho_mok_pla.JPG'], spice: 2,
+      desc: 'เนื้อปลาผสมพริกแกงและกะทิ นึ่งในกระทงใบตองจนนุ่มเนียน ราดหัวกะทิ',
+      main: [['เนื้อปลา', 'Fish fillet'], ['กะทิ', 'Coconut milk'], ['ไข่ไก่', 'Egg'], ['ใบตอง', 'Banana leaf'],
+             ['ใบโหระพา', 'Thai basil'], ['ผักกาดขาว', 'Chinese cabbage', true]],
+      flavor: [['พริกแกงห่อหมก', 'Ho mok curry paste'], ['ใบมะกรูด', 'Kaffir lime leaves'], ['พริกชี้ฟ้า', 'Spur chili'],
+               ['น้ำปลา', 'Fish sauce'], ['น้ำตาลปี๊บ', 'Palm sugar'], ['แป้งข้าวเจ้า', 'Rice flour']]
+    },
+    'khao-pad': {
+      name: 'ข้าวผัด', en: 'Khao Pad', img: 'khao-pad.jpg', photo: ['Vyacheslav Argenberg','CC BY 4.0','https://commons.wikimedia.org/wiki/File:Koh_Mak,_Thailand,_Fried_rice_with_seafood,_Thai_fried_rice.jpg'], spice: 0,
+      desc: 'ข้าวสวยผัดกับไข่และกุ้งหรือหมู ปรุงด้วยน้ำปลาและซีอิ๊ว เสิร์ฟกับแตงกวาและมะนาว',
+      main: [['ข้าวสวย', 'Steamed rice'], ['กุ้ง หมู หรือไก่', 'Shrimp, pork or chicken'], ['ไข่ไก่', 'Egg'],
+             ['หอมหัวใหญ่', 'Onion'], ['มะเขือเทศ', 'Tomato'], ['ต้นหอม', 'Spring onion'], ['แตงกวา', 'Cucumber', true]],
+      flavor: [['กระเทียม', 'Garlic'], ['ซีอิ๊วขาว', 'Light soy sauce'], ['ซอสหอยนางรม', 'Oyster sauce'], ['น้ำปลา', 'Fish sauce'],
+               ['น้ำตาล', 'Sugar'], ['มะนาว', 'Lime'], ['พริกน้ำปลา', 'Chili in fish sauce', true]]
+    },
+    'tod-man-pla': {
+      name: 'ทอดมันปลา', en: 'Tod Man Pla', img: 'tod-man-pla.jpg', photo: ['Takeaway','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Thanin_market_tod_man_pla.jpg'], spice: 1,
+      desc: 'เนื้อปลาตำกับพริกแกงและถั่วฝักยาว ปั้นแล้วทอดกรอบนอกนุ่มใน จิ้มน้ำจิ้มอาจาด',
+      main: [['เนื้อปลากราย', 'Featherback fish paste'], ['ถั่วฝักยาว', 'Yardlong bean'], ['น้ำมันสำหรับทอด', 'Frying oil'],
+             ['แตงกวา', 'Cucumber', true]],
+      flavor: [['พริกแกงเผ็ด', 'Red curry paste'], ['ใบมะกรูด', 'Kaffir lime leaves'], ['น้ำปลา', 'Fish sauce'], ['น้ำตาลทราย', 'Sugar'],
+               ['น้ำส้มสายชู', 'Vinegar'], ['หอมแดง', 'Shallot'], ['พริกชี้ฟ้า', 'Spur chili'], ['ถั่วลิสงป่น', 'Crushed peanuts', true]]
+    },
+    'satay': {
+      name: 'สะเต๊ะ', en: 'Satay', img: 'satay.jpg', photo: ['Athikhun.suw','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Pork_satay_2022.jpg'], spice: 1,
+      desc: 'เนื้อหมูหรือไก่หมักขมิ้นและกะทิ ย่างเสียบไม้ เสิร์ฟกับน้ำจิ้มถั่วและอาจาด',
+      main: [['เนื้อหมูหรือเนื้อไก่', 'Pork or chicken'], ['กะทิ', 'Coconut milk'], ['ไม้เสียบ', 'Bamboo skewers'],
+             ['แตงกวา', 'Cucumber'], ['หอมแดง', 'Shallot'], ['ขนมปัง', 'Toast', true]],
+      flavor: [['ขมิ้น', 'Turmeric'], ['ตะไคร้', 'Lemongrass'], ['ผงกะหรี่', 'Curry powder'], ['ถั่วลิสงป่น', 'Crushed peanuts'],
+               ['พริกแกงเผ็ด', 'Red curry paste'], ['น้ำตาลปี๊บ', 'Palm sugar'], ['น้ำส้มสายชู', 'Vinegar'], ['พริกชี้ฟ้า', 'Spur chili']]
+    },
+    'po-pia-tod': {
+      name: 'ปอเปี๊ยะทอด', en: 'Po Pia Tod', img: 'po-pia-tod.jpg', photo: ['lazy fri13th','CC BY 2.0','https://commons.wikimedia.org/wiki/File:Po_pia_1.jpg'], spice: 0,
+      desc: 'แผ่นแป้งห่อไส้วุ้นเส้นกับผักและหมูสับ ทอดกรอบ จิ้มน้ำจิ้มหวาน',
+      main: [['แผ่นแป้งปอเปี๊ยะ', 'Spring roll wrappers'], ['วุ้นเส้น', 'Glass noodles'], ['หมูสับ', 'Minced pork'], ['กะหล่ำปลี', 'Cabbage'],
+             ['แครอท', 'Carrot'], ['เห็ดหูหนู', 'Wood ear mushrooms', true], ['น้ำมันสำหรับทอด', 'Frying oil']],
+      flavor: [['กระเทียม', 'Garlic'], ['รากผักชี', 'Coriander root'], ['พริกไทย', 'Pepper'], ['ซีอิ๊วขาว', 'Light soy sauce'],
+               ['น้ำจิ้มบ๊วย', 'Plum sauce', true], ['น้ำจิ้มไก่', 'Sweet chili sauce', true]]
+    },
+    'tub-tim-krob': {
+      name: 'ทับทิมกรอบ', en: 'Tub Tim Krob', img: 'tub-tim-krob.jpg', photo: ['Iudexvivorum','CC0','https://commons.wikimedia.org/wiki/File:Crispy_rubies_-_Bangkok_-_2017-07-11_(002).jpg'], spice: 0,
+      desc: 'แห้วเคลือบแป้งสีแดงสด ใส่น้ำกะทิหวานเย็นและน้ำแข็งบด ของหวานดับร้อน',
+      main: [['แห้ว', 'Water chestnut'], ['แป้งมัน', 'Tapioca starch'], ['กะทิ', 'Coconut milk'], ['น้ำแข็งบด', 'Shaved ice'],
+             ['ขนุน', 'Jackfruit', true]],
+      flavor: [['น้ำเชื่อม', 'Sugar syrup'], ['สีผสมอาหารสีแดง', 'Red food colouring'], ['เกลือ', 'Salt'], ['น้ำลอยดอกมะลิ', 'Jasmine-scented water', true]]
     }
   };
 
@@ -217,6 +351,10 @@
     const img = document.getElementById('m-img');
     img.src = 'image/' + m.img;
     img.alt = m.name;
+    const credit = document.getElementById('m-credit');
+    const a = document.createElement('a');
+    a.href = m.photo[2]; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Wikimedia Commons';
+    credit.append('ภาพ: ' + m.photo[0] + ' (' + m.photo[1] + ') · ', a);
     document.getElementById('m-name').textContent = m.name;
     document.getElementById('m-en').textContent = m.en;
     document.getElementById('m-desc').textContent = m.desc;

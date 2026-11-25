@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ลาบหมู">
+  <defs>
+    <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf6e6"/>
+      <stop offset="1" stop-color="#e3d2b0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- จาน -->
+  <ellipse cx="100" cy="128" rx="88" ry="38" fill="url(#plate)" stroke="#cdb98f" stroke-width="2"/>
+  <ellipse cx="100" cy="126" rx="66" ry="26" fill="none" stroke="#cdb98f" stroke-width="1.5" opacity=".7"/>
+
+  <!-- กระติ๊บข้าวเหนียว -->
+  <g>
+    <path d="M150 74 H186 L182 110 C182 116 154 116 154 110 Z" fill="#d9b27a" stroke="#9c7238" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M152 86 H184 M153 98 H183" stroke="#9c7238" stroke-width="1.5" fill="none"/>
+    <path d="M148 74 C148 62 188 62 188 74 Z" fill="#e8c88c" stroke="#9c7238" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+
+  <!-- กะหล่ำปลีและถั่วฝักยาว -->
+  <g>
+    <path d="M24 122 C20 108 40 100 52 108 C56 120 40 130 24 122 Z" fill="#cfe58a" stroke="#7d9a2c" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M28 118 C34 112 42 110 48 112" stroke="#7d9a2c" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M40 138 L68 146" stroke="#5e9a22" stroke-width="5" stroke-linecap="round"/>
+    <path d="M44 148 L72 152" stroke="#5e9a22" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- มะนาว -->
+  <g>
+    <path d="M128 148 C132 134 160 134 164 148 Z" fill="#9bbf3a" stroke="#5a7a1a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M134 146 C138 140 154 140 158 146 Z" fill="#e3ee9a"/>
+  </g>
+
+  <!-- ลาบ -->
+  <path d="M52 124 C48 92 72 68 100 66 C128 68 152 92 148 124 C130 138 70 138 52 124 Z" fill="#b97d4a" stroke="#7d4c26" stroke-width="2" stroke-linejoin="round"/>
+  <!-- เนื้อหมูร่วน -->
+  <g fill="#d09a64">
+    <circle cx="74" cy="104" r="5"/>
+    <circle cx="92" cy="94" r="5"/>
+    <circle cx="112" cy="100" r="5"/>
+    <circle cx="130" cy="112" r="5"/>
+    <circle cx="86" cy="118" r="5"/>
+    <circle cx="110" cy="120" r="5"/>
+    <circle cx="66" cy="120" r="4"/>
+  </g>
+  <!-- ข้าวคั่ว -->
+  <g fill="#f3dfae">
+    <circle cx="80" cy="96" r="2"/>
+    <circle cx="100" cy="108" r="2"/>
+    <circle cx="122" cy="90" r="2"/>
+    <circle cx="138" cy="104" r="2"/>
+    <circle cx="72" cy="114" r="2"/>
+    <circle cx="98" cy="126" r="2"/>
+  </g>
+  <!-- พริกป่น -->
+  <g fill="#c8321f">
+    <circle cx="86" cy="104" r="1.8"/>
+    <circle cx="104" cy="96" r="1.8"/>
+    <circle cx="118" cy="112" r="1.8"/>
+    <circle cx="94" cy="122" r="1.8"/>
+    <circle cx="126" cy="100" r="1.8"/>
+    <circle cx="70" cy="108" r="1.8"/>
+  </g>
+
+  <!-- สะระแหน่ -->
+  <g fill="#4e8a1c" stroke="#2f5d0e" stroke-width="1.2" stroke-linejoin="round">
+    <path d="M94 74 C92 62 108 58 112 68 C110 78 100 80 94 74 Z"/>
+    <path d="M110 76 C112 66 126 66 128 74 C124 82 114 82 110 76 Z"/>
+    <path d="M78 84 C74 74 88 70 92 78 C90 86 82 88 78 84 Z"/>
+  </g>
+  <!-- ต้นหอม -->
+  <g fill="#9bc84a" stroke="#5f8a1c" stroke-width="1">
+    <rect x="102" y="88" width="9" height="3" rx="1.5" transform="rotate(20 106 90)"/>
+    <rect x="124" y="82" width="9" height="3" rx="1.5" transform="rotate(-25 128 84)"/>
+    <rect x="66" y="94" width="9" height="3" rx="1.5" transform="rotate(30 70 96)"/>
+  </g>
+</svg>

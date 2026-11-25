@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ข้าวซอย">
+  <defs>
+    <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf6e6"/>
+      <stop offset="1" stop-color="#e3d2b0"/>
+    </linearGradient>
+    <radialGradient id="curry" cx="50%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#f0b43c"/>
+      <stop offset="0.65" stop-color="#e0902a"/>
+      <stop offset="1" stop-color="#c06a1c"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ไอร้อน -->
+  <g fill="none" stroke="#c9b9a0" stroke-width="4" stroke-linecap="round" opacity=".7">
+    <path d="M70 62 C60 48 80 40 70 26"/>
+    <path d="M130 62 C120 48 140 40 130 26"/>
+  </g>
+
+  <!-- ชาม -->
+  <path d="M18 100 H182 C182 150 150 182 100 182 C50 182 18 150 18 100 Z" fill="url(#bowl)" stroke="#cdb98f" stroke-width="2"/>
+  <path d="M70 184 H130 L126 192 H74 Z" fill="#cdb98f"/>
+  <path d="M34 128 C60 142 140 142 166 128" fill="none" stroke="#c8321f" stroke-width="3" opacity=".55"/>
+
+  <!-- น้ำแกง -->
+  <ellipse cx="100" cy="100" rx="82" ry="26" fill="#fdf6e6" stroke="#cdb98f" stroke-width="2"/>
+  <ellipse cx="100" cy="101" rx="74" ry="21" fill="url(#curry)"/>
+  <!-- น้ำมันพริก -->
+  <g fill="#c8321f" opacity=".6">
+    <ellipse cx="58" cy="108" rx="8" ry="2.5"/>
+    <ellipse cx="144" cy="106" rx="9" ry="2.5"/>
+    <ellipse cx="112" cy="116" rx="6" ry="2"/>
+  </g>
+
+  <!-- เส้นบะหมี่ในน้ำแกง -->
+  <g fill="none" stroke="#f3d27a" stroke-width="3.5" stroke-linecap="round">
+    <path d="M62 100 C74 92 86 108 98 100 C108 94 118 108 132 100"/>
+    <path d="M70 108 C82 102 94 114 106 108 C116 103 126 112 138 106"/>
+  </g>
+
+  <!-- ไก่ -->
+  <g>
+    <path d="M70 92 C64 76 90 66 108 72 C122 76 124 90 114 96 C104 100 88 100 70 92 Z" fill="#c98a4a" stroke="#8c5a26" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M82 80 C90 76 100 76 108 80" fill="none" stroke="#e5b172" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- เส้นทอดกรอบ -->
+  <g fill="none" stroke="#e8b84a" stroke-width="3" stroke-linecap="round">
+    <path d="M108 74 C118 60 134 58 142 68"/>
+    <path d="M110 80 C122 66 140 68 146 78"/>
+    <path d="M104 70 C112 54 128 50 138 58"/>
+    <path d="M118 84 C128 74 142 76 148 86"/>
+    <path d="M100 66 C106 52 120 48 128 52"/>
+  </g>
+  <g fill="none" stroke="#b8821f" stroke-width="1" stroke-linecap="round" opacity=".6">
+    <path d="M110 74 C120 62 134 60 140 68"/>
+    <path d="M106 70 C114 58 126 54 134 58"/>
+  </g>
+
+  <!-- ผักชี -->
+  <g fill="#4e8a1c" stroke="#2f5d0e" stroke-width="1.2" stroke-linejoin="round">
+    <path d="M60 94 C56 86 64 80 70 84 C70 90 66 94 60 94 Z"/>
+    <path d="M70 86 C72 78 82 78 84 84 C80 90 74 90 70 86 Z"/>
+  </g>
+
+  <!-- พริกน้ำมัน -->
+  <g stroke="#8f1d10" stroke-width="1.5" stroke-linecap="round">
+    <path d="M144 94 C154 90 162 96 168 104 C160 102 152 100 144 94 Z" fill="#e0301f"/>
+  </g>
+
+  <!-- มะนาว/หอมแดง -->
+  <g>
+    <path d="M30 100 C26 88 40 80 52 86 C52 96 44 104 30 100 Z" fill="#b085b8" stroke="#6d4a78" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="164" cy="96" r="7" fill="#9bbf3a" stroke="#5a7a1a" stroke-width="1.5"/>
+    <path d="M164 89 V103 M157 96 H171" stroke="#d7e49a" stroke-width="1" fill="none"/>
+  </g>
+</svg>

@@ -6,161 +6,191 @@
 <title>อาหารไทย: สมดุลแห่งรสชาติ</title>
 <meta name="description" content="แนะนำอาหารไทยในหน้าเดียว: รสชาติ เมนูเด็ด อาหารสี่ภาค วัตถุดิบ และวิธีกินแบบคนไทย">
 <style>
+  /* Houseplant-style system: walnut on linen, flat surfaces, hairline rules (see .claude/DESIGN.md) */
   :root {
-    --chili: #c8321f;
-    --turmeric: #f2a900;
-    --lime: #5d8a1a;
-    --cream: #fff8ea;
-    --ink: #2b1d14;
-    --muted: #6d5a4b;
-    --card: #ffffff;
-    --line: #ecdcc0;
+    --walnut: #321e1e;
+    --linen: #f4f1e0;
+    --graphite: #464545;
+    --sand: #f4f4f4;
+    --rule: rgba(70, 69, 69, .3);
+    --shadow: rgba(0, 0, 0, .1) 0 2px 8px 0;
+    --shadow-btn: rgba(0, 0, 0, .15) 0 2px 8px 0;
+    --font: "Inter Tight", "DM Sans", "Archivo", "Sarabun", "Noto Sans Thai", "Leelawadee UI", "Tahoma", system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   body {
     margin: 0;
-    font-family: "Sarabun", "Noto Sans Thai", "Leelawadee UI", "Tahoma", system-ui, sans-serif;
-    background: var(--cream);
-    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    background: var(--linen);
+    color: var(--walnut);
     line-height: 1.7;
+    letter-spacing: -.01em;
   }
-  h1, h2, h3 { line-height: 1.35; margin: 0 0 .5em; }
+  h1, h2, h3 { line-height: 1.3; margin: 0 0 .5em; font-weight: 500; letter-spacing: -.02em; }
   a { color: inherit; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-
-  /* เมนูบน */
-  nav {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(255,248,234,.94);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--line);
-  }
-  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
-  nav .brand { font-weight: 700; text-decoration: none; color: var(--chili); white-space: nowrap; }
-  nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; overflow-x: auto; }
-  nav ul a { text-decoration: none; font-size: 1rem; color: var(--muted); white-space: nowrap; }
-  nav ul a:hover, nav ul a.active { color: var(--chili); }
-
-  /* ส่วนหัว */
-  .hero {
-    background:
-      radial-gradient(circle at 20% 20%, rgba(242,169,0,.35), transparent 45%),
-      radial-gradient(circle at 85% 70%, rgba(106,154,31,.28), transparent 40%),
-      linear-gradient(135deg, #8f1d10, var(--chili));
-    color: #fff;
-    text-align: center;
-    padding: 88px 0 96px;
-  }
-  .hero .sub { font-size: 1.2rem; opacity: .9; }
-  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin: .2em 0; }
-  .hero p { max-width: 640px; margin: 0 auto 28px; font-size: 1.15rem; opacity: .95; }
-  .btn {
-    display: inline-block; background: var(--turmeric); color: var(--ink);
-    padding: 12px 28px; border-radius: 999px; font-weight: 700; text-decoration: none;
-    transition: transform .15s;
-  }
-  .btn:hover { transform: translateY(-2px); }
-  button.btn { border: 0; font: inherit; font-weight: 700; cursor: pointer; }
-  .btn.alt { background: transparent; color: #fff; border: 2px solid #fff; padding: 10px 26px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
-
-  section { padding: 64px 0; }
-  section.alt { background: #fff3da; }
   [hidden] { display: none !important; }
-  .section-head { text-align: center; margin-bottom: 36px; }
-  .section-head h2 { font-size: clamp(1.7rem, 4vw, 2.2rem); color: var(--chili); }
-  .section-head p { color: var(--muted); max-width: 620px; margin: 0 auto; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--walnut); outline-offset: 3px; }
+  .dark a:focus-visible, .dark button:focus-visible, nav a:focus-visible { outline-color: var(--linen); }
+  .eyebrow { font-size: .875rem; font-weight: 500; color: var(--graphite); text-transform: uppercase; margin-bottom: 8px; }
+  .dark .eyebrow { color: rgba(244, 241, 224, .75); }
 
-  .grid { display: grid; gap: 20px; }
-  .grid.flavors { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-  .grid.dishes  { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-  .grid.regions { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-
-  .card {
-    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
-    padding: 22px; box-shadow: 0 2px 0 rgba(0,0,0,.03);
+  /* แถบนำทาง */
+  nav { position: sticky; top: 0; z-index: 10; background: var(--walnut); color: var(--linen); }
+  nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; min-height: 60px; }
+  nav .brand { grid-column: 2; font-weight: 600; font-size: 1.2rem; text-decoration: none; color: var(--linen); white-space: nowrap; }
+  nav ul { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; }
+  nav ul.left { grid-column: 1; grid-row: 1; justify-self: start; }
+  nav ul.right { grid-column: 3; grid-row: 1; justify-self: end; }
+  nav .brand { grid-row: 1; }
+  nav ul a {
+    text-decoration: none; color: var(--linen); opacity: .8; font-size: .95rem; white-space: nowrap;
+    padding: 4px 0; border-bottom: 1px solid transparent;
   }
-  .card h3 { font-size: 1.25rem; }
-  .card .en { color: var(--muted); font-size: .9rem; margin-bottom: 8px; }
-  .card p { margin: 0; color: var(--muted); }
-  .flavor { text-align: center; }
-  .flavor .emoji { font-size: 2.6rem; display: block; margin-bottom: 6px; }
-  .dish .emoji { font-size: 2.2rem; }
-  .dish .emoji img { display: block; width: 1.6em; height: 1.6em; object-fit: contain; }
-  .spice { margin-top: 12px; font-size: .9rem; color: var(--muted); }
-  .spice b { color: var(--chili); letter-spacing: 2px; }
-  .detail-link { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--chili); text-decoration: none; }
-  .detail-link:hover { text-decoration: underline; }
-  .detail-link:focus-visible { outline: 3px solid var(--turmeric); outline-offset: 2px; border-radius: 4px; }
-  .region h3 { color: var(--lime); }
-  .region .sig { margin-top: 10px; font-size: .95rem; font-weight: 600; color: var(--ink); }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-  .chip {
-    background: var(--card); border: 1px solid var(--line); border-radius: 999px;
-    padding: 10px 18px; font-weight: 600;
-  }
-  .chip small { color: var(--muted); font-weight: 400; margin-left: 4px; }
-
-  .tips { max-width: 720px; margin: 0 auto; padding: 0; list-style: none; display: grid; gap: 14px; }
-  .tips li {
-    background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--turmeric);
-    border-radius: 12px; padding: 16px 20px;
-  }
-  .tips strong { color: var(--chili); }
-
-  /* ปุ่มหัวใจ + เมนูโปรด + สุ่มเมนู */
-  .dish { position: relative; }
-  .fav {
-    position: absolute; top: 12px; right: 12px; width: 40px; height: 40px;
-    border-radius: 50%; border: 1px solid var(--line); background: #fff;
-    color: var(--chili); font-size: 1.3rem; line-height: 1; cursor: pointer;
-    transition: transform .15s, background .15s;
-  }
-  .fav:hover { transform: scale(1.1); background: #ffeceb; }
-  .fav[aria-pressed="true"] { background: var(--chili); color: #fff; border-color: var(--chili); }
-  .fav:focus-visible, .btn:focus-visible, .link-btn:focus-visible { outline: 3px solid var(--turmeric); outline-offset: 2px; }
+  nav ul a:hover, nav ul a.active { opacity: 1; border-bottom-color: var(--linen); }
   .badge {
     display: inline-block; min-width: 1.4em; padding: 0 6px; margin-left: 6px;
-    border-radius: 999px; background: var(--chili); color: #fff; font-size: .75rem; text-align: center;
+    border-radius: 4px; background: var(--linen); color: var(--walnut); font-size: .75rem; text-align: center;
   }
-  .pick-card { max-width: 380px; margin: 0 auto; }
-  .pick-card .card { border: 2px solid var(--turmeric); }
-  .pick-card .emoji { font-size: 3.4rem; }
-  .again { text-align: center; margin: 24px 0 0; }
-  .link-btn { background: none; border: 0; color: var(--chili); text-decoration: underline; font: inherit; cursor: pointer; margin-top: 8px; }
-  .empty { text-align: center; color: var(--muted); }
+
+  /* ปุ่ม */
+  .btn {
+    display: inline-block; background: var(--walnut); color: var(--linen);
+    padding: 12px 30px; border-radius: 4px; border: 1px solid var(--walnut);
+    font: inherit; font-weight: 500; letter-spacing: -.02em; text-decoration: none; cursor: pointer;
+    box-shadow: var(--shadow-btn);
+  }
+  .btn:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .btn.inv { background: var(--linen); color: var(--walnut); border-color: var(--linen); }
+  .btn.ghost { background: transparent; color: var(--linen); border-color: var(--linen); box-shadow: none; }
+  .actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+  /* ส่วนหัว */
+  .dark { background: var(--walnut); color: var(--linen); }
+  .hero { padding: 72px 0 80px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 1.2; margin: 0 0 .4em; }
+  .hero p { max-width: 540px; margin: 0 0 32px; font-size: 1.15rem; opacity: .9; }
+  /* ภาพถ่ายเด่น: ภาพใหญ่ซ้าย ภาพเล็กสองรูปขวา */
+  .hero-art { display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; height: 540px; }
+  .hero-art img { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--graphite); border-radius: 8px; }
+  .hero-art img:first-child { grid-row: 1 / 3; }
+
+  section { padding: 96px 0; }
+  main > section:not(.dark) + section:not(.dark):not(#flavors) { border-top: 1px solid var(--rule); }
+  .section-head { margin-bottom: 40px; }
+  .section-head h2 { font-size: clamp(1.7rem, 4vw, 2rem); }
+  .section-head p { color: var(--graphite); max-width: 620px; margin: 0; }
+  .dark .section-head p { color: rgba(244, 241, 224, .8); }
+
+  .grid { display: grid; gap: 20px; }
+  .grid.flavors { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .grid.dishes  { grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 28px; }
+  .grid.regions { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+  .card { background: var(--linen); border-radius: 8px; padding: 20px; box-shadow: var(--shadow); color: var(--walnut); }
+  .card h3 { font-size: 1.15rem; }
+  .card .en { color: var(--graphite); font-size: .875rem; margin-bottom: 8px; }
+  .card p { margin: 0; color: var(--graphite); }
+  /* การ์ดรสชาติ: รูปอยู่บนสุดของการ์ด เหมือนการ์ดเมนู */
+  .flavor { padding: 0 0 24px; }
+  .flavor > :not(.photo) { margin-left: 22px; margin-right: 22px; }
+  .flavor .photo { background: var(--sand); border-radius: 8px 8px 0 0; overflow: hidden; margin-bottom: 18px; }
+  .flavor .photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .spice { margin-top: 12px; font-size: .875rem; color: var(--graphite); }
+  .spice b { color: var(--walnut); letter-spacing: 2px; font-weight: 500; }
+  .region .sig { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: .95rem; font-weight: 500; }
+
+  /* การ์ดเมนู: รูปอยู่บนสุดของการ์ด */
+  .dish { position: relative; padding: 0 0 24px; }
+  .dish > :not(.emoji):not(.fav):not(.spice) { margin-left: 22px; margin-right: 22px; }
+  .dish .emoji { background: var(--sand); border-radius: 8px 8px 0 0; overflow: hidden; margin-bottom: 18px; }
+  .dish .emoji img { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; transition: transform .4s ease; }
+  .dish:hover .emoji img { transform: scale(1.04); }
+  .dish h3 { font-size: 1.35rem; margin-bottom: .1em; }
+  /* ระดับความเผ็ดเป็นป้ายบนมุมซ้ายของรูป */
+  .dish .spice {
+    position: absolute; top: 12px; left: 12px; margin: 0; padding: 2px 10px;
+    background: var(--linen); border-radius: 4px; box-shadow: var(--shadow-btn);
+  }
+  .detail-link { display: inline-block; margin-top: 12px; font-weight: 500; color: var(--walnut); text-decoration: underline; text-underline-offset: 4px; }
+
+  .fav {
+    position: absolute; top: 12px; right: 12px; width: 36px; height: 36px;
+    border-radius: 4px; border: 1px solid var(--walnut); background: var(--linen);
+    color: var(--walnut); font-size: 1.2rem; line-height: 1; cursor: pointer;
+  }
+  .fav:hover { box-shadow: var(--shadow-btn); }
+  .fav[aria-pressed="true"] { background: var(--walnut); color: var(--linen); }
+
+  .pick-card { max-width: 340px; }
+  .again { margin: 24px 0 0; }
+  .link-btn { background: none; border: 0; color: inherit; text-decoration: underline; text-underline-offset: 4px; font: inherit; cursor: pointer; padding: 0; margin-top: 8px; }
+  .empty { color: var(--graphite); margin: 0; }
 
   /* ค้นหาและกรองเมนู: ซ่อนเฉพาะการ์ดในตารางเมนูเด็ด (สำเนาในเมนูโปรด/เมนูวันนี้ไม่โดนซ่อน) */
   #dishes .grid .is-out { display: none; }
-  .filter-bar { max-width: 640px; margin: 0 auto 24px; display: grid; gap: 12px; justify-items: center; }
+  .filter-bar { max-width: 640px; margin: 0 0 32px; display: grid; gap: 12px; justify-items: start; }
   #dish-search {
-    width: 100%; padding: 12px 18px; font: inherit; color: var(--ink);
-    border: 1px solid var(--line); border-radius: 999px; background: #fff;
+    width: 100%; padding: 12px 16px; font: inherit; color: var(--walnut);
+    border: 1px solid var(--walnut); border-radius: 4px; background: var(--linen);
   }
-  #dish-search:focus-visible, .filter-chip:focus-visible { outline: 3px solid var(--turmeric); outline-offset: 2px; }
-  .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  #dish-search::placeholder { color: var(--graphite); opacity: .8; }
+  .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .filter-chip {
-    font: inherit; font-weight: 600; cursor: pointer; padding: 8px 16px; border-radius: 999px;
-    border: 1px solid var(--line); background: #fff; color: var(--muted);
+    font: inherit; font-size: .95rem; font-weight: 500; cursor: pointer; padding: 6px 16px; border-radius: 4px;
+    border: 1px solid var(--walnut); background: transparent; color: var(--walnut);
   }
-  .filter-chip[aria-pressed="true"] { background: var(--chili); border-color: var(--chili); color: #fff; }
-  .filter-meta { color: var(--muted); font-size: .95rem; display: flex; gap: 12px; align-items: center; min-height: 1.7em; }
-  .filter-meta .link-btn { margin-top: 0; }
+  .filter-chip[aria-pressed="true"] { background: var(--walnut); color: var(--linen); }
+  .filter-meta { color: var(--graphite); font-size: .95rem; display: flex; gap: 12px; align-items: center; min-height: 1.7em; }
+  .filter-meta .link-btn { margin-top: 0; color: var(--walnut); }
 
-  footer { background: #2b1d14; color: #f3e6cf; text-align: center; padding: 36px 20px; }
-  footer .big { font-size: 1.4rem; color: var(--turmeric); }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip { border: 1px solid var(--walnut); border-radius: 4px; padding: 8px 16px; font-weight: 500; }
+  .chip small { color: var(--graphite); font-weight: 400; margin-left: 4px; }
 
-  @media (max-width: 640px) {
-    nav .wrap { height: auto; padding-top: 10px; padding-bottom: 10px; flex-direction: column; gap: 6px; }
-    html { scroll-padding-top: 96px; }
-    .hero { padding: 64px 0 72px; }
-    section { padding: 48px 0; }
+  .tips { max-width: 720px; margin: 0; padding: 0; list-style: none; }
+  .tips li { border-top: 1px solid var(--rule); padding: 20px 0; }
+  .tips li:last-child { border-bottom: 1px solid var(--rule); }
+  .tips strong { font-weight: 600; margin-right: 6px; }
+
+  /* ส่วนท้าย */
+  footer { border-top: 1px solid var(--rule); padding: 72px 0 0; overflow: hidden; }
+  .credits { margin-top: 40px; font-size: .8rem; color: var(--graphite); }
+  .credits summary { cursor: pointer; font-weight: 500; }
+  .credits ul { margin: 12px 0 0; padding-left: 20px; columns: 2; }
+  .credits a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
+  footer .big { font-size: 1.75rem; font-weight: 500; letter-spacing: -.02em; line-height: 1.3; margin-bottom: 8px; }
+  footer p { margin: 0; color: var(--graphite); max-width: 460px; }
+  .foot-links { list-style: none; margin: 0; padding: 0; }
+  .foot-links li { border-top: 1px solid var(--rule); line-height: 2.5; }
+  .foot-links li:last-child { border-bottom: 1px solid var(--rule); }
+  .foot-links a { text-decoration: none; display: block; }
+  .foot-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .wordmark {
+    margin-top: 56px; padding: 0 0 .06em; text-align: center; white-space: nowrap;
+    font-size: 15.5vw; font-weight: 600; line-height: .85; letter-spacing: -.05em; color: var(--walnut);
+  }
+
+  @media (max-width: 860px) {
+    nav .wrap { grid-template-columns: 1fr; gap: 6px; padding-top: 10px; padding-bottom: 10px; }
+    nav .brand, nav ul.left, nav ul.right { grid-column: 1; grid-row: auto; justify-self: center; }
+    nav .brand { order: -1; }
+    nav ul { gap: 18px; flex-wrap: wrap; justify-content: center; }
+    html { scroll-padding-top: 120px; }
+    .hero-grid, .foot-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero { padding: 56px 0 64px; }
+    .hero-art { height: 380px; }
+    section { padding: 64px 0; }
+    footer { padding-top: 56px; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .btn { transition: none; }
+    .dish .emoji img { transition: none; }
+    .dish:hover .emoji img { transform: none; }
   }
 </style>
 </head>
@@ -168,11 +198,13 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">🌶️ อาหารไทย</a>
-    <ul>
+    <ul class="left">
       <li><a href="#flavors">รสชาติ</a></li>
       <li><a href="#dishes">เมนูเด็ด</a></li>
       <li><a href="#favorites">♥ เมนูโปรด<span class="badge" id="fav-count" hidden>0</span></a></li>
+    </ul>
+    <a class="brand" href="#top">อาหารไทย</a>
+    <ul class="right">
       <li><a href="#regions">สี่ภาค</a></li>
       <li><a href="#ingredients">วัตถุดิบ</a></li>
       <li><a href="#tips">วิธีกิน</a></li>
@@ -180,14 +212,21 @@
   </div>
 </nav>
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="sub">Thai Food</div>
-    <h1>อาหารไทย: สมดุลแห่งรสชาติ</h1>
-    <p>หวาน เปรี้ยว เค็ม เผ็ด และบางครั้งก็ขม รวมอยู่ในมื้อเดียว มารู้จักเมนู อาหารแต่ละภาค และวัตถุดิบเบื้องหลังอาหารที่คนทั่วโลกหลงรัก</p>
-    <div class="actions">
-      <a class="btn" href="#dishes">ดูเมนูเด็ด</a>
-      <button class="btn alt" id="random-btn" type="button">🎲 สุ่มเมนูวันนี้</button>
+<header class="hero dark" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Thai Food</div>
+      <h1>อาหารไทย: สมดุลแห่งรสชาติ</h1>
+      <p>หวาน เปรี้ยว เค็ม เผ็ด และบางครั้งก็ขม รวมอยู่ในมื้อเดียว มารู้จักเมนู อาหารแต่ละภาค และวัตถุดิบเบื้องหลังอาหารที่คนทั่วโลกหลงรัก</p>
+      <div class="actions">
+        <a class="btn inv" href="#dishes">ดูเมนูเด็ด</a>
+        <button class="btn ghost" id="random-btn" type="button">🎲 สุ่มเมนูวันนี้</button>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <img src="image/tom-kha-gai.jpg" alt="">
+      <img src="image/mango-sticky-rice.jpg" alt="">
+      <img src="image/khao-soi.jpg" alt="">
     </div>
   </div>
 </header>
@@ -196,7 +235,7 @@
   <section id="pick" hidden>
     <div class="wrap">
       <div class="section-head">
-        <h2>🎲 เมนูวันนี้ของคุณ</h2>
+        <div class="eyebrow">Menu of the Day</div><h2>🎲 เมนูวันนี้ของคุณ</h2>
         <p>ถ้ายังไม่ถูกใจ กดสุ่มใหม่ได้เลย</p>
       </div>
       <div id="pick-card" class="pick-card" aria-live="polite"></div>
@@ -207,23 +246,23 @@
   <section id="flavors">
     <div class="wrap">
       <div class="section-head">
-        <h2>สี่รสชาติหลัก</h2>
+        <div class="eyebrow">Four Flavors</div><h2>สี่รสชาติหลัก</h2>
         <p>อาหารไทยไม่ได้เน้นรสใดรสหนึ่ง แต่คือความกลมกล่อม ทุกจานปรับสมดุลหลายรสให้เข้ากัน</p>
       </div>
       <div class="grid flavors">
-        <div class="card flavor"><span class="emoji">🍯</span><h3>หวาน</h3><p>น้ำตาลปี๊บและกะทิช่วยลดความเผ็ดและทำให้แกงนุ่มนวล</p></div>
-        <div class="card flavor"><span class="emoji">🍋</span><h3>เปรี้ยว</h3><p>มะนาว มะขาม และมะม่วงดิบ ให้ความสดชื่นและสดใส</p></div>
-        <div class="card flavor"><span class="emoji">🐟</span><h3>เค็ม</h3><p>น้ำปลาและกะปิให้รสเค็มกลมกล่อมและอูมามิที่ลึก</p></div>
-        <div class="card flavor"><span class="emoji">🌶️</span><h3>เผ็ด</h3><p>พริกสดและพริกแห้งให้ความร้อนแรง ตั้งแต่เผ็ดอ่อนๆ ถึงเผ็ดจัด</p></div>
+        <div class="card flavor"><div class="photo"><img src="image/flavor-sweet.jpg" alt="น้ำตาลปี๊บ"></div><h3>หวาน</h3><p>น้ำตาลปี๊บและกะทิช่วยลดความเผ็ดและทำให้แกงนุ่มนวล</p></div>
+        <div class="card flavor"><div class="photo"><img src="image/flavor-sour.jpg" alt="มะนาว"></div><h3>เปรี้ยว</h3><p>มะนาว มะขาม และมะม่วงดิบ ให้ความสดชื่นและสดใส</p></div>
+        <div class="card flavor"><div class="photo"><img src="image/flavor-salty.jpg" alt="น้ำปลา"></div><h3>เค็ม</h3><p>น้ำปลาและกะปิให้รสเค็มกลมกล่อมและอูมามิที่ลึก</p></div>
+        <div class="card flavor"><div class="photo"><img src="image/flavor-spicy.jpg" alt="พริกแห้ง"></div><h3>เผ็ด</h3><p>พริกสดและพริกแห้งให้ความร้อนแรง ตั้งแต่เผ็ดอ่อนๆ ถึงเผ็ดจัด</p></div>
       </div>
     </div>
   </section>
 
-  <section id="dishes" class="alt">
+  <section id="dishes">
     <div class="wrap">
       <div class="section-head">
-        <h2>เมนูเด็ดประจำชาติ</h2>
-        <p>แปดเมนูคลาสสิกที่ควรลอง ไม่ว่าจะไปเที่ยวหรือลงมือทำเองที่บ้าน</p>
+        <div class="eyebrow">Signature Menu</div><h2>เมนูเด็ดประจำชาติ</h2>
+        <p>ยี่สิบสามเมนูคลาสสิกจากทุกภาคที่ควรลอง ไม่ว่าจะไปเที่ยวหรือลงมือทำเองที่บ้าน</p>
       </div>
       <div class="filter-bar">
         <input type="search" id="dish-search" placeholder="ค้นหาเมนู เช่น แกง, curry, กะทิ" aria-label="ค้นหาเมนู" autocomplete="off">
@@ -240,14 +279,29 @@
       </div>
       <p class="empty" id="filter-empty" hidden>ไม่พบเมนูที่ตรงกัน ลองเปลี่ยนคำค้นหาหรือระดับความเผ็ด</p>
       <div class="grid dishes">
-        <article class="card dish"><div class="emoji"><img src="image/pad-thai.svg" alt="ผัดไทย"></div><h3>ผัดไทย</h3><div class="en">Pad Thai</div><p>เส้นจันท์ผัดกับไข่ เต้าหู้ ถั่วลิสง และซอสมะขาม</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=pad-thai">ดูส่วนประกอบ →</a></article>
-        <article class="card dish"><div class="emoji"><img src="image/tom-yum-goong.svg" alt="ต้มยำกุ้ง"></div><h3>ต้มยำกุ้ง</h3><div class="en">Tom Yum Goong</div><p>ซุปกุ้งรสเผ็ดเปรี้ยว หอมตะไคร้ ข่า และใบมะกรูด</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=tom-yum-goong">ดูส่วนประกอบ →</a></article>
-        <article class="card dish"><div class="emoji"><img src="image/green-curry.svg" alt="แกงเขียวหวาน"></div><h3>แกงเขียวหวาน</h3><div class="en">Green Curry</div><p>แกงกะทิเข้มข้นจากพริกแกงเขียว ใส่มะเขือเปราะและใบโหระพา</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=green-curry">ดูส่วนประกอบ →</a></article>
-        <article class="card dish"><div class="emoji"><img src="image/som-tum.svg" alt="ส้มตำ"></div><h3>ส้มตำ</h3><div class="en">Som Tum</div><p>ยำมะละกอดิบตำกับมะนาว พริก ถั่วลิสง และกุ้งแห้ง</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=som-tum">ดูส่วนประกอบ →</a></article>
-        <article class="card dish"><div class="emoji"><img src="image/massaman-curry.svg" alt="แกงมัสมั่น"></div><h3>แกงมัสมั่น</h3><div class="en">Massaman Curry</div><p>แกงรสกลมกล่อมไม่เผ็ดมาก ใส่มันฝรั่ง ถั่วลิสง และเครื่องเทศหอมอย่างอบเชย</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=massaman-curry">ดูส่วนประกอบ →</a></article>
-        <article class="card dish"><div class="emoji"><img src="image/mango-sticky-rice.svg" alt="ข้าวเหนียวมะม่วง"></div><h3>ข้าวเหนียวมะม่วง</h3><div class="en">Mango Sticky Rice</div><p>มะม่วงสุกหวานกินกับข้าวเหนียวมูนราดกะทิ ของหวานสุดคลาสสิก</p><div class="spice">ความเผ็ด: <b>ไม่เผ็ด</b></div><a class="detail-link" href="menu.html?id=mango-sticky-rice">ดูส่วนประกอบ →</a></article>
-        <article class="card dish"><div class="emoji"><img src="image/pad-kra-pao.svg" alt="ผัดกะเพรา"></div><h3>ผัดกะเพรา</h3><div class="en">Pad Kra Pao</div><p>ผัดใบกะเพรากับเนื้อสับและพริก เสิร์ฟบนข้าวสวยพร้อมไข่ดาว</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=pad-kra-pao">ดูส่วนประกอบ →</a></article>
-        <article class="card dish"><div class="emoji"><img src="image/tom-kha-gai.svg" alt="ต้มข่าไก่"></div><h3>ต้มข่าไก่</h3><div class="en">Tom Kha Gai</div><p>ไก่ในน้ำซุปกะทิหอมข่า รสเปรี้ยวนำ ซดแล้วอุ่นสบายท้อง</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div><a class="detail-link" href="menu.html?id=tom-kha-gai">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/pad-thai.jpg" alt="ผัดไทย"></div><h3>ผัดไทย</h3><div class="en">Pad Thai</div><p>เส้นจันท์ผัดกับไข่ เต้าหู้ ถั่วลิสง และซอสมะขาม</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=pad-thai">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/tom-yum-goong.jpg" alt="ต้มยำกุ้ง"></div><h3>ต้มยำกุ้ง</h3><div class="en">Tom Yum Goong</div><p>ซุปกุ้งรสเผ็ดเปรี้ยว หอมตะไคร้ ข่า และใบมะกรูด</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=tom-yum-goong">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/green-curry.jpg" alt="แกงเขียวหวาน"></div><h3>แกงเขียวหวาน</h3><div class="en">Green Curry</div><p>แกงกะทิเข้มข้นจากพริกแกงเขียว ใส่มะเขือเปราะและใบโหระพา</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=green-curry">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/som-tum.jpg" alt="ส้มตำ"></div><h3>ส้มตำ</h3><div class="en">Som Tum</div><p>ยำมะละกอดิบตำกับมะนาว พริก ถั่วลิสง และกุ้งแห้ง</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=som-tum">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/massaman-curry.jpg" alt="แกงมัสมั่น"></div><h3>แกงมัสมั่น</h3><div class="en">Massaman Curry</div><p>แกงรสกลมกล่อมไม่เผ็ดมาก ใส่มันฝรั่ง ถั่วลิสง และเครื่องเทศหอมอย่างอบเชย</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=massaman-curry">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/mango-sticky-rice.jpg" alt="ข้าวเหนียวมะม่วง"></div><h3>ข้าวเหนียวมะม่วง</h3><div class="en">Mango Sticky Rice</div><p>มะม่วงสุกหวานกินกับข้าวเหนียวมูนราดกะทิ ของหวานสุดคลาสสิก</p><div class="spice">ความเผ็ด: <b>ไม่เผ็ด</b></div><a class="detail-link" href="menu.html?id=mango-sticky-rice">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/pad-kra-pao.jpg" alt="ผัดกะเพรา"></div><h3>ผัดกะเพรา</h3><div class="en">Pad Kra Pao</div><p>ผัดใบกะเพรากับเนื้อสับและพริก เสิร์ฟบนข้าวสวยพร้อมไข่ดาว</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=pad-kra-pao">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/tom-kha-gai.jpg" alt="ต้มข่าไก่"></div><h3>ต้มข่าไก่</h3><div class="en">Tom Kha Gai</div><p>ไก่ในน้ำซุปกะทิหอมข่า รสเปรี้ยวนำ ซดแล้วอุ่นสบายท้อง</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div><a class="detail-link" href="menu.html?id=tom-kha-gai">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/khao-soi.jpg" alt="ข้าวซอย"></div><h3>ข้าวซอย</h3><div class="en">Khao Soi</div><p>แกงกะทิรสเข้มข้นหอมเครื่องเทศแบบเหนือ เสิร์ฟกับเส้นบะหมี่ไข่ต้มและทอดกรอบ</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div><a class="detail-link" href="menu.html?id=khao-soi">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/larb.jpg" alt="ลาบ"></div><h3>ลาบ</h3><div class="en">Larb</div><p>เนื้อสับคลุกข้าวคั่วป่น พริกป่น น้ำปลา และมะนาว โรยสมุนไพรสด กินกับข้าวเหนียว</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=larb">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/kaeng-som.jpg" alt="แกงส้ม"></div><h3>แกงส้ม</h3><div class="en">Kaeng Som</div><p>แกงรสเปรี้ยวจากมะขามและส้มแขก ไม่ใส่กะทิ ใส่กุ้งและผักรวม</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=kaeng-som">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/khao-man-gai.jpg" alt="ข้าวมันไก่"></div><h3>ข้าวมันไก่</h3><div class="en">Khao Man Gai</div><p>ไก่ต้มเนื้อนุ่มเสิร์ฟบนข้าวหุงน้ำมันไก่ กินกับน้ำจิ้มเต้าเจี้ยวและน้ำซุปใส</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=khao-man-gai">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/pad-see-ew.jpg" alt="ผัดซีอิ๊ว"></div><h3>ผัดซีอิ๊ว</h3><div class="en">Pad See Ew</div><p>เส้นใหญ่ผัดกับซีอิ๊วดำ ไข่ และคะน้า หอมกลิ่นไหม้อ่อนๆ จากกระทะร้อน</p><div class="spice">ความเผ็ด: <b>ไม่เผ็ด</b></div><a class="detail-link" href="menu.html?id=pad-see-ew">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/kuai-tiao-ruea.jpg" alt="ก๋วยเตี๋ยวเรือ"></div><h3>ก๋วยเตี๋ยวเรือ</h3><div class="en">Boat Noodles</div><p>ก๋วยเตี๋ยวน้ำซุปเข้มข้นรสจัด ใส่เนื้อ ลูกชิ้น และผักบุ้ง เสิร์ฟเป็นชามเล็กๆ</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div><a class="detail-link" href="menu.html?id=kuai-tiao-ruea">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/phanaeng.jpg" alt="แกงพะแนง"></div><h3>แกงพะแนง</h3><div class="en">Phanaeng Curry</div><p>แกงกะทิข้นรสหวานมันเค็ม เผ็ดไม่จัด หอมใบมะกรูดและถั่วลิสง</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div><a class="detail-link" href="menu.html?id=phanaeng">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/kai-yang.jpg" alt="ไก่ย่าง"></div><h3>ไก่ย่าง</h3><div class="en">Kai Yang</div><p>ไก่หมักสมุนไพรย่างไฟอ่อนจนหนังหอม กินกับน้ำจิ้มแจ่วและข้าวเหนียว</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div><a class="detail-link" href="menu.html?id=kai-yang">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/yam-wun-sen.jpg" alt="ยำวุ้นเส้น"></div><h3>ยำวุ้นเส้น</h3><div class="en">Yam Wun Sen</div><p>วุ้นเส้นลวกยำกับหมูสับและกุ้ง รสเปรี้ยวเผ็ดจัดจ้าน โรยถั่วลิสง</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=yam-wun-sen">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/ho-mok.jpg" alt="ห่อหมก"></div><h3>ห่อหมก</h3><div class="en">Ho Mok</div><p>เนื้อปลาผสมพริกแกงและกะทิ นึ่งในกระทงใบตองจนนุ่มเนียน ราดหัวกะทิ</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div><a class="detail-link" href="menu.html?id=ho-mok">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/khao-pad.jpg" alt="ข้าวผัด"></div><h3>ข้าวผัด</h3><div class="en">Khao Pad</div><p>ข้าวสวยผัดกับไข่และกุ้งหรือหมู ปรุงด้วยน้ำปลาและซีอิ๊ว เสิร์ฟกับแตงกวาและมะนาว</p><div class="spice">ความเผ็ด: <b>ไม่เผ็ด</b></div><a class="detail-link" href="menu.html?id=khao-pad">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/tod-man-pla.jpg" alt="ทอดมันปลา"></div><h3>ทอดมันปลา</h3><div class="en">Tod Man Pla</div><p>เนื้อปลาตำกับพริกแกงและถั่วฝักยาว ปั้นแล้วทอดกรอบนอกนุ่มใน จิ้มน้ำจิ้มอาจาด</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=tod-man-pla">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/satay.jpg" alt="สะเต๊ะ"></div><h3>สะเต๊ะ</h3><div class="en">Satay</div><p>เนื้อหมูหรือไก่หมักขมิ้นและกะทิ ย่างเสียบไม้ เสิร์ฟกับน้ำจิ้มถั่วและอาจาด</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=satay">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/po-pia-tod.jpg" alt="ปอเปี๊ยะทอด"></div><h3>ปอเปี๊ยะทอด</h3><div class="en">Po Pia Tod</div><p>แผ่นแป้งห่อไส้วุ้นเส้นกับผักและหมูสับ ทอดกรอบ จิ้มน้ำจิ้มหวาน</p><div class="spice">ความเผ็ด: <b>ไม่เผ็ด</b></div><a class="detail-link" href="menu.html?id=po-pia-tod">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/tub-tim-krob.jpg" alt="ทับทิมกรอบ"></div><h3>ทับทิมกรอบ</h3><div class="en">Tub Tim Krob</div><p>แห้วเคลือบแป้งสีแดงสด ใส่น้ำกะทิหวานเย็นและน้ำแข็งบด ของหวานดับร้อน</p><div class="spice">ความเผ็ด: <b>ไม่เผ็ด</b></div><a class="detail-link" href="menu.html?id=tub-tim-krob">ดูส่วนประกอบ →</a></article>
       </div>
     </div>
   </section>
@@ -255,7 +309,7 @@
   <section id="favorites">
     <div class="wrap">
       <div class="section-head">
-        <h2>♥ เมนูโปรดของฉัน</h2>
+        <div class="eyebrow">Favorites</div><h2>♥ เมนูโปรดของฉัน</h2>
         <p>เมนูที่คุณกดหัวใจไว้ จะถูกจำไว้ในเบราว์เซอร์นี้</p>
         <button class="link-btn" id="fav-clear" type="button" hidden>ล้างทั้งหมด</button>
       </div>
@@ -264,10 +318,10 @@
     </div>
   </section>
 
-  <section id="regions" class="alt">
+  <section id="regions" class="dark">
     <div class="wrap">
       <div class="section-head">
-        <h2>สี่ภาค สี่บุคลิก</h2>
+        <div class="eyebrow">Four Regions</div><h2>สี่ภาค สี่บุคลิก</h2>
         <p>รสชาติอาหารไทยเปลี่ยนไปตามแต่ละภาค</p>
       </div>
       <div class="grid regions">
@@ -282,7 +336,7 @@
   <section id="ingredients">
     <div class="wrap">
       <div class="section-head">
-        <h2>วัตถุดิบหลักในครัวไทย</h2>
+        <div class="eyebrow">Key Ingredients</div><h2>วัตถุดิบหลักในครัวไทย</h2>
         <p>สมุนไพรสดและเครื่องปรุงไม่กี่อย่างคือตัวกำหนดรสชาติของอาหารไทย</p>
       </div>
       <div class="chips">
@@ -300,10 +354,10 @@
     </div>
   </section>
 
-  <section id="tips" class="alt">
+  <section id="tips">
     <div class="wrap">
       <div class="section-head">
-        <h2>กินแบบคนไทย</h2>
+        <div class="eyebrow">How to Eat</div><h2>กินแบบคนไทย</h2>
       </div>
       <ul class="tips">
         <li><strong>กินด้วยกัน</strong> สั่งหลายจานมาวางกลางโต๊ะ แล้วตักแบ่งกินกับข้าวสวย</li>
@@ -317,8 +371,55 @@
 </main>
 
 <footer>
-  <div class="big">ทานข้าวหรือยัง?</div>
-  <p>คำทักทายของคนไทยที่แปลว่า "คุณกินข้าวหรือยัง" ขอให้อร่อยกับทุกมื้อนะ!</p>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="big">ทานข้าวหรือยัง?</div>
+      <p>คำทักทายของคนไทยที่แปลว่า "คุณกินข้าวหรือยัง" ขอให้อร่อยกับทุกมื้อนะ!</p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="#flavors">รสชาติ</a></li>
+      <li><a href="#dishes">เมนูเด็ด</a></li>
+      <li><a href="#favorites">เมนูโปรด</a></li>
+      <li><a href="#regions">สี่ภาค</a></li>
+      <li><a href="#ingredients">วัตถุดิบ</a></li>
+      <li><a href="#tips">วิธีกิน</a></li>
+    </ul>
+  </div>
+  <div class="wrap">
+    <details class="credits">
+      <summary>ที่มาของภาพอาหาร</summary>
+      <ul>
+        <li>ผัดไทย: Andy Li (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Pad_Thai_with_Pork_-_Unithai.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ต้มยำกุ้ง: Asturio Cantabrio (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Siam_Garden_Tom_yum_goong_ac.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>แกงเขียวหวาน: Guilhem Vellut (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Green_Curry,_Siam_House,_Paris_001.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ส้มตำ: Andy Li (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Som_Tom_(Papaya_Salad)_-_Little_Thai_2024-06-14.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>แกงมัสมั่น: Vee Satayamas (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Massaman_curry,_Bang_Kapi,_Bangkok.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ข้าวเหนียวมะม่วง: Arthur Taksin (CC BY 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Mango_sticky_rice_served_in_Thailand.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ผัดกะเพรา: Andy Li (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Kao_Rad_Pad_Kra-pao_with_chicken_and_fried_egg_-_Unithai_2025-07-30.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ต้มข่าไก่: TeamTeam2002 (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Tom_Kha_Gai_-_Thai_Food.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ข้าวซอย: Douglas Perkins (CC BY 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Khao_Soi_02.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ลาบ: Sbrooks36 (CC BY 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Golden_Cuisine_cooked_beef_laab.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>แกงส้ม: Takeaway (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Kaeng_som_kung.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ข้าวมันไก่: Takeaway (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Khao_mun_kai_CM.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ผัดซีอิ๊ว: stu_spivack (CC BY-SA 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Pad_see_ew.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ก๋วยเตี๋ยวเรือ: Zheng Zhou (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Boat_Noodles_with_sliced_beef_round_steak,_beef_ball,_braised_shank_and_tendon.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>แกงพะแนง: Takeaway (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Phanaeng_kai.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ไก่ย่าง: Takeaway (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Kai_yang_and_nam_chim.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ยำวุ้นเส้น: Takeaway (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Yam_wunsen.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ห่อหมก: Takeaway (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Ho_mok_pla.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ข้าวผัด: Vyacheslav Argenberg (CC BY 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Koh_Mak,_Thailand,_Fried_rice_with_seafood,_Thai_fried_rice.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ทอดมันปลา: Takeaway (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Thanin_market_tod_man_pla.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>สะเต๊ะ: Athikhun.suw (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Pork_satay_2022.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ปอเปี๊ยะทอด: lazy fri13th (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Po_pia_1.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>ทับทิมกรอบ: Iudexvivorum (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Crispy_rubies_-_Bangkok_-_2017-07-11_(002).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>รสหวาน (น้ำตาลปี๊บ): Badagnani (CC BY 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Palmsugar.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>รสเปรี้ยว (มะนาว): Ivar Leidus (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Lime_-_whole_and_halved.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>รสเค็ม (น้ำปลา): Heinrich Damm (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Thaifishsauce0609.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+        <li>รสเผ็ด (พริกแห้ง): Adam (CC BY-SA 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Dried_Thai_Dragon_Peppers.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      </ul>
+    </details>
+  </div>
+  <div class="wordmark" aria-hidden="true">THAI FOOD</div>
 </footer>
 
 <script>
