@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ต้มยำกุ้ง">
+  <defs>
+    <radialGradient id="broth" cx="50%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#f5a623"/>
+      <stop offset="0.6" stop-color="#e2711d"/>
+      <stop offset="1" stop-color="#b8431a"/>
+    </radialGradient>
+    <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf6e6"/>
+      <stop offset="1" stop-color="#e3d2b0"/>
+    </linearGradient>
+    <linearGradient id="shrimp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb08a"/>
+      <stop offset="1" stop-color="#f06a3c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ไอร้อน -->
+  <g fill="none" stroke="#c9b9a0" stroke-width="4" stroke-linecap="round" opacity=".7">
+    <path d="M70 62 C60 48 80 40 70 26"/>
+    <path d="M100 58 C90 42 110 34 100 18"/>
+    <path d="M130 62 C120 48 140 40 130 26"/>
+  </g>
+
+  <!-- ชาม -->
+  <path d="M18 100 H182 C182 150 150 182 100 182 C50 182 18 150 18 100 Z" fill="url(#bowl)" stroke="#cdb98f" stroke-width="2"/>
+  <path d="M70 184 H130 L126 192 H74 Z" fill="#cdb98f"/>
+  <path d="M34 128 C60 142 140 142 166 128" fill="none" stroke="#c8321f" stroke-width="3" opacity=".55"/>
+
+  <!-- น้ำซุป -->
+  <ellipse cx="100" cy="100" rx="82" ry="26" fill="#fdf6e6" stroke="#cdb98f" stroke-width="2"/>
+  <ellipse cx="100" cy="101" rx="74" ry="21" fill="url(#broth)"/>
+  <!-- น้ำมันพริก -->
+  <g fill="#c8321f" opacity=".55">
+    <ellipse cx="62" cy="106" rx="7" ry="2.5"/>
+    <ellipse cx="136" cy="108" rx="9" ry="2.5"/>
+    <ellipse cx="108" cy="116" rx="6" ry="2"/>
+  </g>
+
+  <!-- ตะไคร้ -->
+  <g stroke-linecap="round" fill="none">
+    <path d="M56 96 L112 80" stroke="#d9d98a" stroke-width="6"/>
+    <path d="M56 96 L112 80" stroke="#a7a94c" stroke-width="1.5" stroke-dasharray="6 5"/>
+  </g>
+
+  <!-- ข่า -->
+  <g fill="#f3dfae" stroke="#c9a85a" stroke-width="1.5">
+    <ellipse cx="128" cy="96" rx="9" ry="5" transform="rotate(-18 128 96)"/>
+    <ellipse cx="92" cy="112" rx="8" ry="4.5" transform="rotate(14 92 112)"/>
+  </g>
+
+  <!-- เห็ด -->
+  <g>
+    <path d="M70 100 C70 88 94 88 94 100 Z" fill="#e8d9bd" stroke="#b79d6c" stroke-width="1.5"/>
+    <rect x="77" y="99" width="10" height="9" rx="3" fill="#f6edd9" stroke="#b79d6c" stroke-width="1.5"/>
+  </g>
+
+  <!-- ใบมะกรูด -->
+  <g fill="#4e8a1c" stroke="#2f5d0e" stroke-width="1.2">
+    <path d="M104 98 C112 86 128 90 128 100 C118 104 110 104 104 98 Z"/>
+    <path d="M44 104 C50 94 62 96 64 104 C56 108 50 108 44 104 Z"/>
+  </g>
+
+  <!-- กุ้ง 1 -->
+  <g>
+    <path d="M78 84 C70 62 108 52 126 70 C132 78 128 88 120 92 C118 82 104 74 92 80 C88 82 84 86 78 84 Z" fill="url(#shrimp)" stroke="#c8431f" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M90 66 C93 72 93 78 90 82 M102 62 C106 68 106 74 103 79 M114 64 C118 70 118 76 115 82" fill="none" stroke="#c8431f" stroke-width="1.6" stroke-linecap="round" opacity=".7"/>
+    <path d="M122 70 L138 62 L132 78 L142 80 L126 86 Z" fill="#ef7a4d" stroke="#c8431f" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M78 84 C66 80 60 70 56 62 M80 82 C68 74 66 64 66 56" fill="none" stroke="#c8431f" stroke-width="1.4" stroke-linecap="round"/>
+    <circle cx="82" cy="82" r="2" fill="#2b1d14"/>
+  </g>
+
+  <!-- กุ้ง 2 -->
+  <g>
+    <path d="M96 118 C92 104 124 98 140 108 C146 114 142 122 136 124 C134 116 122 112 112 116 C108 118 102 120 96 118 Z" fill="url(#shrimp)" stroke="#c8431f" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M138 108 L152 104 L146 116 L154 120 L140 122 Z" fill="#ef7a4d" stroke="#c8431f" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+
+  <!-- พริก -->
+  <g stroke="#8f1d10" stroke-width="1.5" stroke-linecap="round">
+    <path d="M144 94 C154 90 162 96 168 104 C160 102 152 100 144 94 Z" fill="#e0301f"/>
+    <path d="M50 110 C42 108 34 112 30 120 C38 118 44 116 50 110 Z" fill="#e0301f"/>
+  </g>
+</svg>

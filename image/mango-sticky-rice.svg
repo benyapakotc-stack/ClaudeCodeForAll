@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ข้าวเหนียวมะม่วง">
+  <defs>
+    <linearGradient id="ms-mango" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd54a"/>
+      <stop offset="1" stop-color="#ffa51f"/>
+    </linearGradient>
+    <radialGradient id="ms-rice" cx="45%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#efe6d2"/>
+    </radialGradient>
+  </defs>
+
+  <!-- จาน -->
+  <ellipse cx="100" cy="128" rx="92" ry="52" fill="#fdf6e6" stroke="#cdb98f" stroke-width="2"/>
+  <ellipse cx="100" cy="126" rx="76" ry="40" fill="#f7efdc" stroke="#e3d2b0" stroke-width="1.5"/>
+
+  <!-- ใบตอง -->
+  <path d="M20 136 C40 100 70 96 90 112 C70 128 44 144 20 136 Z" fill="#4e8a1c" stroke="#2f5d0e" stroke-width="1.5"/>
+  <path d="M24 134 C44 118 66 112 86 112" fill="none" stroke="#7fb83a" stroke-width="1.5"/>
+
+  <!-- มะม่วงหั่นแฉก -->
+  <g stroke="#d98a0f" stroke-width="2" stroke-linejoin="round" fill="url(#ms-mango)">
+    <path d="M44 138 C48 116 72 108 92 118 C84 134 66 146 44 138 Z"/>
+    <path d="M62 150 C70 130 96 124 112 134 C102 150 82 160 62 150 Z"/>
+    <path d="M90 154 C102 138 128 136 142 148 C130 162 110 168 90 154 Z"/>
+    <path d="M122 150 C134 134 156 134 168 144 C158 158 140 162 122 150 Z"/>
+  </g>
+  <g fill="none" stroke="#ffe27a" stroke-width="2" stroke-linecap="round" opacity=".8">
+    <path d="M52 134 C60 124 74 120 84 122"/>
+    <path d="M72 146 C82 136 98 132 106 136"/>
+    <path d="M100 152 C110 144 124 142 134 148"/>
+    <path d="M130 148 C140 140 152 140 160 144"/>
+  </g>
+
+  <!-- ข้าวเหนียว -->
+  <path d="M60 112 C58 66 92 48 118 54 C150 62 156 96 148 114 C132 126 80 128 60 112 Z" fill="url(#ms-rice)" stroke="#cdb98f" stroke-width="2"/>
+  <!-- เม็ดข้าว -->
+  <g fill="#fffdf6" stroke="#ddd0b0" stroke-width="1">
+    <ellipse cx="86" cy="76" rx="5" ry="2.6" transform="rotate(-25 86 76)"/>
+    <ellipse cx="102" cy="68" rx="5" ry="2.6" transform="rotate(20 102 68)"/>
+    <ellipse cx="120" cy="76" rx="5" ry="2.6" transform="rotate(-10 120 76)"/>
+    <ellipse cx="94" cy="92" rx="5" ry="2.6" transform="rotate(30 94 92)"/>
+    <ellipse cx="114" cy="94" rx="5" ry="2.6" transform="rotate(-30 114 94)"/>
+    <ellipse cx="134" cy="92" rx="5" ry="2.6" transform="rotate(15 134 92)"/>
+    <ellipse cx="78" cy="98" rx="5" ry="2.6" transform="rotate(-15 78 98)"/>
+    <ellipse cx="104" cy="108" rx="5" ry="2.6" transform="rotate(10 104 108)"/>
+  </g>
+
+  <!-- กะทิราด -->
+  <path d="M76 70 C92 60 120 58 138 72 C132 80 128 74 124 82 C120 76 114 86 108 78 C102 88 96 78 90 84 C86 78 80 82 76 70 Z" fill="#ffffff" stroke="#e6dcc4" stroke-width="1.5" opacity=".95"/>
+  <path d="M60 112 C74 118 120 122 148 114 C148 120 140 124 128 125 C112 124 100 126 82 124 C70 122 62 118 60 112 Z" fill="#ffffff" opacity=".7"/>
+
+  <!-- ถั่วเขียวกรอบ / งา -->
+  <g fill="#e0b43c">
+    <circle cx="96" cy="64" r="2"/><circle cx="108" cy="62" r="2"/><circle cx="120" cy="66" r="2"/>
+    <circle cx="100" cy="72" r="2"/><circle cx="114" cy="72" r="2"/>
+  </g>
+  <g fill="#5a4a3a">
+    <circle cx="90" cy="68" r="1.3"/><circle cx="126" cy="72" r="1.3"/><circle cx="106" cy="78" r="1.3"/>
+  </g>
+</svg>
