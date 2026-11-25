@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="แกงมัสมั่น">
+  <defs>
+    <radialGradient id="mc-broth" cx="50%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#d68a3a"/>
+      <stop offset="0.6" stop-color="#b3641c"/>
+      <stop offset="1" stop-color="#8a4412"/>
+    </radialGradient>
+    <linearGradient id="mc-bowl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdf6e6"/>
+      <stop offset="1" stop-color="#e3d2b0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ไอร้อน -->
+  <g fill="none" stroke="#c9b9a0" stroke-width="4" stroke-linecap="round" opacity=".7">
+    <path d="M72 62 C62 48 82 40 72 26"/>
+    <path d="M102 58 C92 42 112 34 102 18"/>
+    <path d="M132 62 C122 48 142 40 132 26"/>
+  </g>
+
+  <!-- ชาม -->
+  <path d="M18 100 H182 C182 150 150 182 100 182 C50 182 18 150 18 100 Z" fill="url(#mc-bowl)" stroke="#cdb98f" stroke-width="2"/>
+  <path d="M70 184 H130 L126 192 H74 Z" fill="#cdb98f"/>
+  <path d="M34 128 C60 142 140 142 166 128" fill="none" stroke="#b3641c" stroke-width="3" opacity=".5"/>
+
+  <!-- น้ำแกง -->
+  <ellipse cx="100" cy="100" rx="82" ry="26" fill="#fdf6e6" stroke="#cdb98f" stroke-width="2"/>
+  <ellipse cx="100" cy="101" rx="74" ry="21" fill="url(#mc-broth)"/>
+  <g fill="#e8a24f" opacity=".6">
+    <ellipse cx="64" cy="106" rx="8" ry="2.5"/><ellipse cx="138" cy="110" rx="9" ry="2.5"/>
+  </g>
+
+  <!-- เนื้อ -->
+  <g fill="#8a4a24" stroke="#5a2c12" stroke-width="1.8" stroke-linejoin="round">
+    <path d="M78 90 C82 80 98 78 104 86 C106 96 90 100 80 96 Z"/>
+    <path d="M122 92 C126 84 142 84 146 92 C146 100 130 104 122 98 Z"/>
+  </g>
+  <g stroke="#b9743c" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".8">
+    <path d="M84 86 C90 84 96 86 98 90"/><path d="M128 90 C134 88 140 90 141 94"/>
+  </g>
+
+  <!-- มันฝรั่ง -->
+  <g fill="#f2d48a" stroke="#c9a04a" stroke-width="1.8" stroke-linejoin="round">
+    <path d="M58 100 L70 94 L80 100 L76 112 L62 112 Z"/>
+    <path d="M104 98 L116 92 L126 100 L122 111 L108 111 Z"/>
+    <path d="M140 104 L150 100 L158 106 L154 114 L142 114 Z"/>
+  </g>
+  <g fill="#fbe9b4" opacity=".7"><circle cx="70" cy="100" r="2.5"/><circle cx="116" cy="98" r="2.5"/></g>
+
+  <!-- หอมหัวใหญ่ -->
+  <g fill="none" stroke="#e6d3c4" stroke-width="3" stroke-linecap="round">
+    <path d="M88 108 C94 102 102 104 104 110"/>
+    <path d="M110 80 C116 74 124 76 126 82"/>
+  </g>
+
+  <!-- ถั่วลิสง -->
+  <g fill="#c98a45" stroke="#8a5622" stroke-width="1">
+    <ellipse cx="90" cy="76" rx="4.5" ry="3"/><ellipse cx="136" cy="80" rx="4.5" ry="3"/>
+    <ellipse cx="52" cy="110" rx="4.5" ry="3"/><ellipse cx="96" cy="114" rx="4.5" ry="3"/>
+    <ellipse cx="148" cy="96" rx="4.5" ry="3"/>
+  </g>
+
+  <!-- โป๊ยกั๊ก -->
+  <g transform="translate(116 112)" fill="#5a2c12" stroke="#3a1c0a" stroke-width="1" stroke-linejoin="round">
+    <path d="M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z"/>
+    <path d="M-6 -6 L-1 -1 M6 -6 L1 -1 M-6 6 L-1 1 M6 6 L1 1" stroke="#5a2c12" stroke-width="2.4"/>
+  </g>
+
+  <!-- อบเชย -->
+  <g stroke="#8a4a24" stroke-width="4" stroke-linecap="round">
+    <path d="M40 94 L58 86"/>
+  </g>
+  <path d="M40 94 L58 86" stroke="#c98a45" stroke-width="1.4" stroke-linecap="round"/>
+</svg>

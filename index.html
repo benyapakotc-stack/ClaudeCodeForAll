@@ -90,6 +90,9 @@
   .dish .emoji img { display: block; width: 1.6em; height: 1.6em; object-fit: contain; }
   .spice { margin-top: 12px; font-size: .9rem; color: var(--muted); }
   .spice b { color: var(--chili); letter-spacing: 2px; }
+  .detail-link { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--chili); text-decoration: none; }
+  .detail-link:hover { text-decoration: underline; }
+  .detail-link:focus-visible { outline: 3px solid var(--turmeric); outline-offset: 2px; border-radius: 4px; }
   .region h3 { color: var(--lime); }
   .region .sig { margin-top: 10px; font-size: .95rem; font-weight: 600; color: var(--ink); }
 
@@ -237,14 +240,14 @@
       </div>
       <p class="empty" id="filter-empty" hidden>ไม่พบเมนูที่ตรงกัน ลองเปลี่ยนคำค้นหาหรือระดับความเผ็ด</p>
       <div class="grid dishes">
-        <article class="card dish"><div class="emoji"><img src="image/pad-thai.svg" alt="ผัดไทย"></div><h3>ผัดไทย</h3><div class="en">Pad Thai</div><p>เส้นจันท์ผัดกับไข่ เต้าหู้ ถั่วลิสง และซอสมะขาม</p><div class="spice">ความเผ็ด: <b>🌶</b></div></article>
-        <article class="card dish"><div class="emoji"><img src="image/tom-yum-goong.svg" alt="ต้มยำกุ้ง"></div><h3>ต้มยำกุ้ง</h3><div class="en">Tom Yum Goong</div><p>ซุปกุ้งรสเผ็ดเปรี้ยว หอมตะไคร้ ข่า และใบมะกรูด</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div></article>
-        <article class="card dish"><div class="emoji">🍛</div><h3>แกงเขียวหวาน</h3><div class="en">Green Curry</div><p>แกงกะทิเข้มข้นจากพริกแกงเขียว ใส่มะเขือเปราะและใบโหระพา</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div></article>
-        <article class="card dish"><div class="emoji"><img src="image/som-tum.svg" alt="ส้มตำ"></div><h3>ส้มตำ</h3><div class="en">Som Tum</div><p>ยำมะละกอดิบตำกับมะนาว พริก ถั่วลิสง และกุ้งแห้ง</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶🌶</b></div></article>
-        <article class="card dish"><div class="emoji">🥘</div><h3>แกงมัสมั่น</h3><div class="en">Massaman Curry</div><p>แกงรสกลมกล่อมไม่เผ็ดมาก ใส่มันฝรั่ง ถั่วลิสง และเครื่องเทศหอมอย่างอบเชย</p><div class="spice">ความเผ็ด: <b>🌶</b></div></article>
-        <article class="card dish"><div class="emoji"><img src="image/mango-sticky-rice.svg" alt="ข้าวเหนียวมะม่วง"></div><h3>ข้าวเหนียวมะม่วง</h3><div class="en">Mango Sticky Rice</div><p>มะม่วงสุกหวานกินกับข้าวเหนียวมูนราดกะทิ ของหวานสุดคลาสสิก</p><div class="spice">ความเผ็ด: <b>ไม่เผ็ด</b></div></article>
-        <article class="card dish"><div class="emoji">🍳</div><h3>ผัดกะเพรา</h3><div class="en">Pad Kra Pao</div><p>ผัดใบกะเพรากับเนื้อสับและพริก เสิร์ฟบนข้าวสวยพร้อมไข่ดาว</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div></article>
-        <article class="card dish"><div class="emoji">🥥</div><h3>ต้มข่าไก่</h3><div class="en">Tom Kha Gai</div><p>ไก่ในน้ำซุปกะทิหอมข่า รสเปรี้ยวนำ ซดแล้วอุ่นสบายท้อง</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div></article>
+        <article class="card dish"><div class="emoji"><img src="image/pad-thai.svg" alt="ผัดไทย"></div><h3>ผัดไทย</h3><div class="en">Pad Thai</div><p>เส้นจันท์ผัดกับไข่ เต้าหู้ ถั่วลิสง และซอสมะขาม</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=pad-thai">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/tom-yum-goong.svg" alt="ต้มยำกุ้ง"></div><h3>ต้มยำกุ้ง</h3><div class="en">Tom Yum Goong</div><p>ซุปกุ้งรสเผ็ดเปรี้ยว หอมตะไคร้ ข่า และใบมะกรูด</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=tom-yum-goong">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/green-curry.svg" alt="แกงเขียวหวาน"></div><h3>แกงเขียวหวาน</h3><div class="en">Green Curry</div><p>แกงกะทิเข้มข้นจากพริกแกงเขียว ใส่มะเขือเปราะและใบโหระพา</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=green-curry">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/som-tum.svg" alt="ส้มตำ"></div><h3>ส้มตำ</h3><div class="en">Som Tum</div><p>ยำมะละกอดิบตำกับมะนาว พริก ถั่วลิสง และกุ้งแห้ง</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=som-tum">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/massaman-curry.svg" alt="แกงมัสมั่น"></div><h3>แกงมัสมั่น</h3><div class="en">Massaman Curry</div><p>แกงรสกลมกล่อมไม่เผ็ดมาก ใส่มันฝรั่ง ถั่วลิสง และเครื่องเทศหอมอย่างอบเชย</p><div class="spice">ความเผ็ด: <b>🌶</b></div><a class="detail-link" href="menu.html?id=massaman-curry">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/mango-sticky-rice.svg" alt="ข้าวเหนียวมะม่วง"></div><h3>ข้าวเหนียวมะม่วง</h3><div class="en">Mango Sticky Rice</div><p>มะม่วงสุกหวานกินกับข้าวเหนียวมูนราดกะทิ ของหวานสุดคลาสสิก</p><div class="spice">ความเผ็ด: <b>ไม่เผ็ด</b></div><a class="detail-link" href="menu.html?id=mango-sticky-rice">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/pad-kra-pao.svg" alt="ผัดกะเพรา"></div><h3>ผัดกะเพรา</h3><div class="en">Pad Kra Pao</div><p>ผัดใบกะเพรากับเนื้อสับและพริก เสิร์ฟบนข้าวสวยพร้อมไข่ดาว</p><div class="spice">ความเผ็ด: <b>🌶🌶🌶</b></div><a class="detail-link" href="menu.html?id=pad-kra-pao">ดูส่วนประกอบ →</a></article>
+        <article class="card dish"><div class="emoji"><img src="image/tom-kha-gai.svg" alt="ต้มข่าไก่"></div><h3>ต้มข่าไก่</h3><div class="en">Tom Kha Gai</div><p>ไก่ในน้ำซุปกะทิหอมข่า รสเปรี้ยวนำ ซดแล้วอุ่นสบายท้อง</p><div class="spice">ความเผ็ด: <b>🌶🌶</b></div><a class="detail-link" href="menu.html?id=tom-kha-gai">ดูส่วนประกอบ →</a></article>
       </div>
     </div>
   </section>
